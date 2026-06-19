@@ -86,7 +86,7 @@
         }
 
         /* ============================================================ */
-        /* ========== HEADER ========== */
+        /* ========== HEADER - FIXED (DIAM) ========== */
         /* ============================================================ */
         header {
             position: fixed;
@@ -94,7 +94,9 @@
             left: 0;
             right: 0;
             padding: 12px 30px;
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.06);
             display: flex;
             align-items: center;
@@ -102,13 +104,6 @@
             z-index: 1000;
             transition: all 0.3s ease;
             gap: 16px;
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        header.hidden {
-            transform: translateY(-100%);
-            opacity: 0;
         }
 
         .left-section {
@@ -263,13 +258,63 @@
         }
 
         /* ============================================================ */
+        /* ========== FLOATING CUSTOMER SERVICE BUTTON ========== */
+        /* ============================================================ */
+        .float-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #ffffff;
+            color: #000000;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .float-btn .pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.04);
+            animation: pulse-ring 2s ease-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        /* ============================================================ */
         /* ========== HERO / HOME ========== */
         /* ============================================================ */
         .hero {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 100px 60px 80px;
+            padding: 120px 60px 80px;
             min-height: 100vh;
             gap: 60px;
             max-width: 1400px;
@@ -608,13 +653,13 @@
             transform: translateX(-50%);
             width: 88%;
             max-width: 400px;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-radius: 14px;
             padding: 18px 24px;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.10);
+            border: 1px solid rgba(0, 0, 0, 0.06);
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -624,14 +669,14 @@
 
         .stat-item {
             text-align: center;
-            color: #ffffff;
+            color: #000000;
         }
 
         .stat-number {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 26px;
             font-weight: 700;
-            color: #ffffff;
+            color: #000000;
             line-height: 1.2;
         }
 
@@ -641,7 +686,7 @@
 
         .stat-label {
             font-size: 12px;
-            color: #aaaaaa;
+            color: #666666;
             font-weight: 400;
             letter-spacing: 0.3px;
             margin-top: 2px;
@@ -650,11 +695,11 @@
         .stat-divider {
             width: 1px;
             height: 36px;
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(0, 0, 0, 0.10);
         }
 
         /* ============================================================ */
-        /* ========== ABOUT PAGE ========== */
+        /* ========== ABOUT PAGE - PUTIH ========== */
         /* ============================================================ */
         .about-page {
             background: #ffffff;
@@ -666,25 +711,19 @@
         }
 
         .about-box {
-            background: #000000;
+            background: #f8f8f8;
             width: 100%;
             max-width: 100%;
             padding: 60px 60px 50px;
             border-radius: 30px;
             position: relative;
             z-index: 1;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.10);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.04);
             overflow: hidden;
         }
 
         #particles-about {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
+            display: none;
         }
 
         .about-content {
@@ -700,14 +739,14 @@
 
         .about-header .badge {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.08);
-            color: #999999;
+            background: #f0f0f0;
+            color: #1a1a1a;
             font-size: 13px;
             font-weight: 500;
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.04);
             padding: 6px 18px;
             border-radius: 40px;
         }
@@ -716,13 +755,13 @@
             font-family: 'Space Grotesk', sans-serif;
             font-size: 56px;
             font-weight: 700;
-            color: #ffffff;
+            color: #000000;
             letter-spacing: -2px;
             line-height: 1.05;
         }
 
         .about-header h1 span {
-            background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
+            background: linear-gradient(135deg, #000000 0%, #555555 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -730,7 +769,7 @@
 
         .about-header p {
             font-size: 18px;
-            color: #999999;
+            color: #666666;
             margin-top: 16px;
             max-width: 600px;
             margin-left: auto;
@@ -746,21 +785,23 @@
         }
 
         .about-card {
-            background: rgba(255, 255, 255, 0.04);
+            background: #ffffff;
             border-radius: 16px;
             padding: 32px 28px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid #e8e8e8;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
         }
 
         .about-card:hover {
-            background: rgba(255, 255, 255, 0.08);
             transform: translateY(-4px);
+            border-color: #000000;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
         }
 
         .about-card .icon {
             font-size: 32px;
-            color: #ffffff;
+            color: #000000;
             margin-bottom: 16px;
             display: block;
         }
@@ -769,63 +810,144 @@
             font-family: 'Space Grotesk', sans-serif;
             font-size: 18px;
             font-weight: 600;
-            color: #ffffff;
+            color: #000000;
             margin-bottom: 8px;
         }
 
         .about-card p {
             font-size: 14px;
-            color: #999999;
+            color: #666666;
             line-height: 1.6;
         }
 
-        .about-bottom {
+        /* ===== KENAPA HARUS KAMI - PUTIH ===== */
+        .why-section-new {
+            margin-top: 60px;
+            padding-top: 50px;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .why-wrapper {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            flex-wrap: wrap;
+            gap: 50px;
         }
 
-        .about-bottom .text h3 {
+        .why-image {
+            flex: 0 0 45%;
+            max-width: 45%;
+        }
+
+        .why-image img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 20px;
+            display: block;
+            border: none;
+            outline: none;
+            pointer-events: none;
+            -webkit-user-drag: none;
+            user-drag: none;
+            box-shadow: none;
+        }
+
+        .why-content {
+            flex: 1;
+        }
+
+        .why-content .badge {
+            display: inline-block;
+            background: #f0f0f0;
+            color: #1a1a1a;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 6px 18px;
+            border-radius: 40px;
+        }
+
+        .why-content h2 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 22px;
-            font-weight: 600;
-            color: #ffffff;
+            font-size: 40px;
+            font-weight: 700;
+            color: #000000;
+            letter-spacing: -1.5px;
+            line-height: 1.05;
+            margin-bottom: 14px;
         }
 
-        .about-bottom .text p {
+        .why-content h2 span {
+            background: linear-gradient(135deg, #000000 0%, #555555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .why-content .why-desc {
+            font-size: 16px;
+            color: #666666;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .why-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 24px;
+            margin-bottom: 28px;
+        }
+
+        .why-list-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #333333;
             font-size: 14px;
-            color: #888888;
-            margin-top: 4px;
+            line-height: 1.4;
         }
 
-        .about-bottom .btn-about {
+        .why-list-item .list-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 13px;
+        }
+
+        .why-content .btn-why {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: #ffffff;
-            color: #000000;
+            background: #000000;
+            color: #ffffff;
             font-size: 15px;
             font-weight: 500;
-            padding: 14px 32px;
+            padding: 12px 32px;
             border-radius: 40px;
             text-decoration: none;
             transition: all 0.3s ease;
-            border: 1px solid #ffffff;
+            border: 1px solid #000000;
             cursor: pointer;
         }
 
-        .about-bottom .btn-about:hover {
+        .why-content .btn-why:hover {
             background: transparent;
-            color: #ffffff;
+            color: #000000;
             transform: scale(1.02);
         }
 
         /* ============================================================ */
-        /* ========== SERVICE PAGE ========== */
+        /* ========== SERVICE PAGE - PUTIH ========== */
         /* ============================================================ */
         .service-page {
             background: #ffffff;
@@ -904,14 +1026,14 @@
 
         .paket-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.10);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
             border-color: #000000;
         }
 
         .paket-card.populer {
             border-color: #000000;
             background: #fafafa;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
         }
 
         .paket-card .populer-badge {
@@ -1010,137 +1132,153 @@
             color: #000000;
         }
 
-        /* ===== FAQ - LAYOUT 2 KOLOM ===== */
-        .faq-wrapper {
-            display: flex;
-            gap: 40px;
-            align-items: flex-start;
-        }
-
-        .faq-left {
-            flex: 1;
-        }
-
-        .faq-right {
-            flex: 0 0 280px;
-            position: sticky;
-            top: 100px;
-            align-self: flex-start;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .faq-right img {
+        /* ============================================================ */
+        /* ========== LANGKAH KERJA - PUTIH ========== */
+        /* ============================================================ */
+        .work-steps {
+            background: #ffffff;
+            padding: 100px 60px 60px;
             width: 100%;
-            height: auto;
-            aspect-ratio: 4/5;
-            object-fit: cover;
-            display: block;
-            border: none;
-            outline: none;
-            max-width: 280px;
-            margin-right: -30px;
-            padding-right: 15px;
-            pointer-events: none;
-            -webkit-user-drag: none;
-            user-drag: none;
         }
 
-        .faq-section .faq-title {
-            text-align: left;
-            margin-bottom: 40px;
+        .work-container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .faq-section .faq-title h2 {
+        .work-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .work-header .badge {
+            display: inline-block;
+            background: #f0f0f0;
+            color: #1a1a1a;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 40px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .work-header h2 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 36px;
+            font-size: 44px;
             font-weight: 700;
             color: #000000;
+            letter-spacing: -1.5px;
+            line-height: 1.05;
         }
 
-        .faq-section .faq-title p {
-            font-size: 16px;
-            color: #888888;
-            margin-top: 8px;
+        .work-header h2 span {
+            background: linear-gradient(135deg, #000000 0%, #555555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .faq-item {
-            border-bottom: 1px solid #e8e8e8;
-            padding: 18px 0;
+        .work-header p {
+            font-size: 18px;
+            color: #666666;
+            margin-top: 16px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
         }
 
-        .faq-item:last-child {
-            border-bottom: none;
+        .work-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            padding: 20px 0 10px;
         }
 
-        .faq-question {
+        .work-timeline::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 60px;
+            right: 60px;
+            height: 2px;
+            background: #e0e0e0;
+            z-index: 0;
+        }
+
+        .work-step-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 0 10px;
+        }
+
+        .work-step-item .step-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #000000;
+            color: #ffffff;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            padding: 4px 0;
-            user-select: none;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
-        .faq-question h3 {
-            font-size: 17px;
-            font-weight: 500;
+        .work-step-item:hover .step-circle {
+            transform: scale(1.08);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .work-step-item h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
             color: #000000;
-            transition: color 0.3s ease;
+            margin-bottom: 4px;
         }
 
-        .faq-question:hover h3 {
-            color: #555555;
-        }
-
-        .faq-question .faq-icon {
-            font-size: 20px;
-            color: #000000;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.3s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            padding-top: 12px;
-        }
-
-        .faq-answer p {
-            font-size: 15px;
-            color: #666666;
-            line-height: 1.6;
+        .work-step-item p {
+            font-size: 14px;
+            color: #888888;
+            line-height: 1.5;
+            max-width: 200px;
+            margin: 0 auto;
         }
 
         /* ============================================================ */
-        /* ========== PORTFOLIO PAGE ========== */
+        /* ========== PORTFOLIO PAGE - PUTIH ========== */
         /* ============================================================ */
         .portfolio-page {
             background: #ffffff;
-            padding: 0px;
+            padding: 25px;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
 
         .portfolio-box {
-            background: #000000;
+            background: #f8f8f8;
             width: 100%;
             max-width: 100%;
             padding: 60px 60px 50px;
             border-radius: 30px;
             position: relative;
             z-index: 1;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.10);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
         }
 
         .portfolio-content {
@@ -1151,70 +1289,121 @@
 
         .portfolio-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
         .portfolio-header .badge {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.08);
-            color: #999999;
+            background: #f0f0f0;
+            color: #1a1a1a;
             font-size: 13px;
             font-weight: 500;
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.04);
             padding: 6px 18px;
             border-radius: 40px;
         }
 
         .portfolio-header h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 56px;
+            font-size: 48px;
             font-weight: 700;
-            color: #ffffff;
-            letter-spacing: -2px;
+            color: #000000;
+            letter-spacing: -1.5px;
             line-height: 1.05;
         }
 
         .portfolio-header h1 span {
-            background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
+            background: linear-gradient(135deg, #000000 0%, #555555 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .portfolio-header p {
-            font-size: 18px;
-            color: #999999;
-            margin-top: 16px;
-            max-width: 600px;
+            font-size: 16px;
+            color: #666666;
+            margin-top: 12px;
+            max-width: 500px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.7;
+            line-height: 1.6;
+        }
+
+        .portfolio-nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .portfolio-nav .btn-nav {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #000000;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 400;
+            border: 1px solid #000000;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .portfolio-nav .btn-nav:hover:not(.disabled) {
+            background: #ffffff;
+            color: #000000;
+            transform: scale(1.05);
+        }
+
+        .portfolio-nav .btn-nav.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            background: #cccccc;
+            color: #888888;
+            border-color: #cccccc;
+        }
+
+        .portfolio-nav .btn-nav.disabled:hover {
+            transform: none;
+            background: #cccccc;
+            color: #888888;
+        }
+
+        .portfolio-slider-wrapper {
+            overflow: hidden;
+            position: relative;
         }
 
         .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
             gap: 30px;
-            margin-bottom: 60px;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
         }
 
         .portfolio-item {
-            background: rgba(255, 255, 255, 0.04);
+            flex: 0 0 calc(33.333% - 20px);
+            background: #ffffff;
             border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid #e8e8e8;
             transition: all 0.3s ease;
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
         }
 
         .portfolio-item:hover {
-            background: rgba(255, 255, 255, 0.08);
             transform: translateY(-6px);
-            border-color: rgba(255, 255, 255, 0.15);
+            border-color: #000000;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
         }
 
         .portfolio-item .portfolio-image {
@@ -1238,7 +1427,7 @@
             font-family: 'Space Grotesk', sans-serif;
             font-size: 18px;
             font-weight: 600;
-            color: #ffffff;
+            color: #000000;
             margin-bottom: 4px;
         }
 
@@ -1251,7 +1440,7 @@
 
         .portfolio-item .portfolio-desc {
             font-size: 14px;
-            color: #999999;
+            color: #666666;
             line-height: 1.6;
             margin-bottom: 16px;
             flex: 1;
@@ -1262,15 +1451,15 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            background: #ffffff;
-            color: #000000;
+            background: #000000;
+            color: #ffffff;
             font-size: 14px;
             font-weight: 500;
             padding: 10px 20px;
             border-radius: 40px;
             text-decoration: none;
             transition: all 0.3s ease;
-            border: 1px solid #ffffff;
+            border: 1px solid #000000;
             align-self: flex-start;
             margin-top: auto;
             cursor: pointer;
@@ -1278,57 +1467,12 @@
 
         .portfolio-item .btn-visit:hover {
             background: transparent;
-            color: #ffffff;
-            transform: scale(1.02);
-        }
-
-        .portfolio-bottom {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            flex-wrap: wrap;
-        }
-
-        .portfolio-bottom .text h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 22px;
-            font-weight: 600;
-            color: #ffffff;
-        }
-
-        .portfolio-bottom .text p {
-            font-size: 14px;
-            color: #888888;
-            margin-top: 4px;
-        }
-
-        .portfolio-bottom .btn-portfolio {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #ffffff;
             color: #000000;
-            font-size: 15px;
-            font-weight: 500;
-            padding: 14px 32px;
-            border-radius: 40px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 1px solid #ffffff;
-            cursor: pointer;
-        }
-
-        .portfolio-bottom .btn-portfolio:hover {
-            background: transparent;
-            color: #ffffff;
             transform: scale(1.02);
         }
 
         /* ============================================================ */
-        /* ========== TESTIMONIAL PAGE ========== */
+        /* ========== TESTIMONIAL PAGE - PUTIH ========== */
         /* ============================================================ */
         .testimonial-page {
             background: #ffffff;
@@ -1507,9 +1651,256 @@
         }
 
         /* ============================================================ */
-        /* ========== BANNER 16:5 ========== */
+        /* ========== FAQ PAGE - PUTIH ========== */
         /* ============================================================ */
-        .banner-section {
+        .faq-page {
+            background: #ffffff;
+            padding: 100px 60px 60px;
+            width: 100%;
+        }
+
+        .faq-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .faq-page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .faq-page-header .badge {
+            display: inline-block;
+            background: #f0f0f0;
+            color: #1a1a1a;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 40px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .faq-page-header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #000000;
+            letter-spacing: -1.5px;
+            line-height: 1.05;
+        }
+
+        .faq-page-header h1 span {
+            background: linear-gradient(135deg, #000000 0%, #555555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .faq-page-header p {
+            font-size: 18px;
+            color: #666666;
+            margin-top: 16px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .faq-wrapper-new {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        .faq-left-new {
+            flex: 1;
+        }
+
+        .faq-right-new {
+            flex: 0 0 280px;
+            position: sticky;
+            top: 100px;
+            align-self: flex-start;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .faq-right-new img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            display: block;
+            border: none;
+            outline: none;
+            max-width: 280px;
+            margin-right: -30px;
+            padding-right: 15px;
+            pointer-events: none;
+            -webkit-user-drag: none;
+            user-drag: none;
+        }
+
+        .faq-item-card {
+            border-bottom: 1px solid #e8e8e8;
+            padding: 16px 0;
+            cursor: pointer;
+        }
+
+        .faq-item-card:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4px 0;
+            user-select: none;
+        }
+
+        .faq-question-card h3 {
+            font-size: 17px;
+            font-weight: 500;
+            color: #000000;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question-card:hover h3 {
+            color: #555555;
+        }
+
+        .faq-question-card .faq-icon-card {
+            font-size: 20px;
+            color: #000000;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item-card.active .faq-icon-card {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer-card {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+
+        .faq-item-card.active .faq-answer-card {
+            max-height: 200px;
+            padding-top: 12px;
+        }
+
+        .faq-answer-card p {
+            font-size: 15px;
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        /* ============================================================ */
+        /* ========== BANNER CTA 16:3.5 - PUTIH ========== */
+        /* ============================================================ */
+        .banner-cta {
+            width: 100%;
+            background: #f8f8f8;
+            aspect-ratio: 16/3.5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 60px;
+            border-top: 1px solid #e8e8e8;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .banner-cta-content {
+            text-align: center;
+            max-width: 700px;
+        }
+
+        .banner-cta-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #000000;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .banner-cta-content h2 span {
+            background: linear-gradient(135deg, #000000 0%, #555555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .banner-cta-content p {
+            font-size: 16px;
+            color: #666666;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .banner-cta-buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #000000;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid #000000;
+            cursor: pointer;
+        }
+
+        .btn-cta-primary:hover {
+            background: transparent;
+            color: #000000;
+            transform: scale(1.03);
+        }
+
+        .btn-cta-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: #000000;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid #cccccc;
+            cursor: pointer;
+        }
+
+        .btn-cta-secondary:hover {
+            background: #f5f5f5;
+            border-color: #000000;
+            transform: scale(1.03);
+        }
+
+        /* ============================================================ */
+        /* ========== FOTO 16:5 KEDUA ========== */
+        /* ============================================================ */
+        .banner-image-second {
             width: 100%;
             padding: 0;
             margin: 0;
@@ -1517,7 +1908,7 @@
             line-height: 0;
         }
 
-        .banner-section img {
+        .banner-image-second img {
             width: 100%;
             height: auto;
             aspect-ratio: 16/5;
@@ -1533,7 +1924,7 @@
         }
 
         /* ============================================================ */
-        /* ========== FOOTER - 40% ========== */
+        /* ========== FOOTER - TETAP HITAM ========== */
         /* ============================================================ */
         .footer-contact {
             background: #000000;
@@ -1554,7 +1945,6 @@
             align-items: start;
         }
 
-        /* ===== KOLOM 1: BRAND ===== */
         .footer-brand h2 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 24px;
@@ -1608,7 +1998,6 @@
             cursor: pointer;
         }
 
-        /* ===== KOLOM 2: TAUTAN CEPAT ===== */
         .footer-links h4 {
             font-size: 14px;
             font-weight: 600;
@@ -1650,7 +2039,6 @@
             color: #666666;
         }
 
-        /* ===== KOLOM 3: JAM OPERASIONAL ===== */
         .footer-hours h4 {
             font-size: 14px;
             font-weight: 600;
@@ -1687,7 +2075,6 @@
             font-weight: 400;
         }
 
-        /* ===== KOLOM 4: FORM ===== */
         .footer-form h4 {
             font-size: 14px;
             font-weight: 600;
@@ -1770,9 +2157,6 @@
             font-size: 14px;
         }
 
-        /* ============================================================ */
-        /* ========== FOOTER BOTTOM ========== */
-        /* ============================================================ */
         .footer-bottom {
             background: #0a0a0a;
             padding: 12px 60px;
@@ -1793,9 +2177,8 @@
         }
 
         /* ============================================================ */
-        /* ========== RESPONSIVE MOBILE ========== */
+        /* ========== RESPONSIVE ========== */
         /* ============================================================ */
-        /* === KEAMANAN: Cegah save gambar & view code === */
         body {
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -1804,7 +2187,6 @@
             user-select: none;
         }
 
-        /* === HAMBURGER & NAV MOBILE === */
         @media (max-width: 768px) {
             .hamburger {
                 display: flex !important;
@@ -1819,7 +2201,9 @@
                 width: 75%;
                 max-width: 320px;
                 height: 100vh;
-                background: #ffffff;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
                 flex-direction: column;
                 justify-content: flex-start;
                 align-items: stretch;
@@ -1896,7 +2280,6 @@
                 padding-left: 6px;
             }
 
-            /* === HERO MOBILE - HIDE KANAN === */
             .hero {
                 flex-direction: column;
                 padding: 100px 24px 40px;
@@ -1913,7 +2296,6 @@
                 order: 1;
             }
 
-            /* HIDE hero-visual di mobile */
             .hero-visual {
                 display: none !important;
             }
@@ -1945,7 +2327,6 @@
                 font-size: 14px;
             }
 
-            /* === ABOUT MOBILE === */
             .about-page {
                 padding: 0px;
             }
@@ -1985,22 +2366,86 @@
                 font-size: 13px;
             }
 
-            .about-bottom {
-                flex-direction: column;
-                text-align: center;
-                gap: 20px;
+            .why-section-new {
+                margin-top: 40px;
                 padding-top: 30px;
             }
 
-            .about-bottom .text h3 {
-                font-size: 18px;
+            .why-wrapper {
+                flex-direction: column;
+                gap: 30px;
             }
 
-            .about-bottom .text p {
+            .why-image {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+
+            .why-image img {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .why-content h2 {
+                font-size: 28px;
+            }
+
+            .why-content .why-desc {
+                font-size: 14px;
+            }
+
+            .why-list {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .why-list-item {
                 font-size: 13px;
             }
 
-            /* === SERVICE MOBILE === */
+            .why-content .btn-why {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .work-steps {
+                padding: 60px 20px 40px;
+            }
+
+            .work-header h2 {
+                font-size: 32px;
+            }
+
+            .work-header p {
+                font-size: 15px;
+            }
+
+            .work-timeline {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                padding: 10px 0;
+            }
+
+            .work-timeline::before {
+                display: none;
+            }
+
+            .work-step-item {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .work-step-item .step-circle {
+                width: 64px;
+                height: 64px;
+                font-size: 26px;
+            }
+
+            .work-step-item p {
+                max-width: 100%;
+            }
+
             .service-page {
                 padding: 80px 20px 40px;
             }
@@ -2048,39 +2493,8 @@
                 padding: 4px 0;
             }
 
-            /* === FAQ MOBILE - HIDE GAMBAR === */
-            .faq-wrapper {
-                flex-direction: column;
-                gap: 30px;
-            }
-
-            .faq-left {
-                max-width: 100%;
-            }
-
-            .faq-right {
-                display: none !important;
-            }
-
-            .faq-section .faq-title h2 {
-                font-size: 26px;
-            }
-
-            .faq-section .faq-title p {
-                font-size: 14px;
-            }
-
-            .faq-question h3 {
-                font-size: 15px;
-            }
-
-            .faq-answer p {
-                font-size: 14px;
-            }
-
-            /* === PORTFOLIO MOBILE === */
             .portfolio-page {
-                padding: 0px;
+                padding: 16px;
             }
 
             .portfolio-box {
@@ -2096,10 +2510,17 @@
                 font-size: 15px;
             }
 
+            .portfolio-nav {
+                justify-content: center;
+                margin-bottom: 24px;
+            }
+
+            .portfolio-item {
+                flex: 0 0 calc(100% - 0px);
+            }
+
             .portfolio-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-                margin-bottom: 40px;
+                gap: 20px;
             }
 
             .portfolio-item .portfolio-image {
@@ -2107,7 +2528,7 @@
             }
 
             .portfolio-item .portfolio-body {
-                padding: 16px 16px 20px;
+                padding: 18px 18px 22px;
             }
 
             .portfolio-item h3 {
@@ -2118,22 +2539,6 @@
                 font-size: 13px;
             }
 
-            .portfolio-bottom {
-                flex-direction: column;
-                text-align: center;
-                gap: 20px;
-                padding-top: 30px;
-            }
-
-            .portfolio-bottom .text h3 {
-                font-size: 18px;
-            }
-
-            .portfolio-bottom .text p {
-                font-size: 13px;
-            }
-
-            /* === TESTIMONIAL MOBILE === */
             .testimonial-page {
                 padding: 60px 20px 40px;
             }
@@ -2161,7 +2566,66 @@
                 width: 40px;
             }
 
-            /* === FOOTER MOBILE === */
+            .faq-page {
+                padding: 60px 20px 40px;
+            }
+
+            .faq-page-header h1 {
+                font-size: 32px;
+            }
+
+            .faq-page-header p {
+                font-size: 15px;
+            }
+
+            .faq-wrapper-new {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .faq-right-new {
+                flex: 1;
+                width: 100%;
+                position: static;
+                align-self: center;
+                justify-content: center;
+            }
+
+            .faq-right-new img {
+                max-width: 200px;
+                margin: 0 auto;
+                padding-right: 0;
+                margin-right: 0;
+            }
+
+            .faq-question-card h3 {
+                font-size: 15px;
+            }
+
+            .faq-answer-card p {
+                font-size: 14px;
+            }
+
+            .banner-cta {
+                padding: 0 24px;
+                aspect-ratio: 16/4.5;
+            }
+
+            .banner-cta-content h2 {
+                font-size: 24px;
+            }
+
+            .banner-cta-content p {
+                font-size: 14px;
+                max-width: 100%;
+            }
+
+            .btn-cta-primary,
+            .btn-cta-secondary {
+                font-size: 13px;
+                padding: 10px 22px;
+            }
+
             .footer-contact {
                 padding: 30px 20px 20px;
                 min-height: auto;
@@ -2200,12 +2664,20 @@
             .footer-bottom p {
                 font-size: 11px;
             }
+
+            .float-btn {
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+                bottom: 20px;
+                right: 20px;
+            }
         }
 
-        /* === MOBILE KECIL (max-width: 480px) === */
         @media (max-width: 480px) {
             header {
                 padding: 8px 14px;
+                background: rgba(255, 255, 255, 0.85);
             }
 
             .profile-photo {
@@ -2291,6 +2763,34 @@
                 font-size: 12px;
             }
 
+            .why-content h2 {
+                font-size: 24px;
+            }
+
+            .why-list-item {
+                font-size: 12px;
+            }
+
+            .why-list-item .list-icon {
+                width: 24px;
+                height: 24px;
+                font-size: 11px;
+            }
+
+            .work-step-item .step-circle {
+                width: 56px;
+                height: 56px;
+                font-size: 22px;
+            }
+
+            .work-step-item h3 {
+                font-size: 15px;
+            }
+
+            .work-step-item p {
+                font-size: 12px;
+            }
+
             .service-header h1 {
                 font-size: 26px;
             }
@@ -2323,16 +2823,8 @@
                 font-size: 12px;
             }
 
-            .faq-section .faq-title h2 {
-                font-size: 22px;
-            }
-
-            .faq-section .faq-title p {
-                font-size: 13px;
-            }
-
-            .faq-question h3 {
-                font-size: 13px;
+            .portfolio-page {
+                padding: 12px;
             }
 
             .portfolio-box {
@@ -2348,16 +2840,30 @@
                 font-size: 13px;
             }
 
+            .portfolio-nav .btn-nav {
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
+            }
+
+            .portfolio-item {
+                flex: 0 0 calc(100% - 0px);
+            }
+
+            .portfolio-grid {
+                gap: 16px;
+            }
+
             .portfolio-item .portfolio-image {
                 height: 130px;
             }
 
             .portfolio-item .portfolio-body {
-                padding: 12px 12px 16px;
+                padding: 14px 14px 18px;
             }
 
             .portfolio-item h3 {
-                font-size: 14px;
+                font-size: 15px;
             }
 
             .portfolio-item .portfolio-desc {
@@ -2398,6 +2904,41 @@
             .testimonial-container::before,
             .testimonial-container::after {
                 width: 24px;
+            }
+
+            .faq-page-header h1 {
+                font-size: 26px;
+            }
+
+            .faq-question-card h3 {
+                font-size: 13px;
+            }
+
+            .faq-right-new img {
+                max-width: 160px;
+            }
+
+            .banner-cta {
+                aspect-ratio: 16/5;
+                padding: 0 16px;
+            }
+
+            .banner-cta-content h2 {
+                font-size: 18px;
+            }
+
+            .banner-cta-content p {
+                font-size: 12px;
+            }
+
+            .btn-cta-primary,
+            .btn-cta-secondary {
+                font-size: 11px;
+                padding: 8px 16px;
+            }
+
+            .banner-cta-buttons {
+                gap: 10px;
             }
 
             .footer-contact {
@@ -2466,9 +3007,16 @@
                 font-size: 7px;
                 bottom: -18px;
             }
+
+            .float-btn {
+                width: 44px;
+                height: 44px;
+                font-size: 18px;
+                bottom: 16px;
+                right: 16px;
+            }
         }
 
-        /* === TABLET (769px - 1024px) === */
         @media (min-width: 769px) and (max-width: 1024px) {
             header {
                 padding: 10px 24px;
@@ -2611,9 +3159,45 @@
                 padding: 24px 20px;
             }
 
-            .about-bottom {
-                flex-direction: column;
-                text-align: center;
+            .why-wrapper {
+                gap: 30px;
+            }
+
+            .why-image {
+                flex: 0 0 40%;
+                max-width: 40%;
+            }
+
+            .why-content h2 {
+                font-size: 32px;
+            }
+
+            .why-list {
+                gap: 8px 16px;
+            }
+
+            .work-steps {
+                padding: 80px 40px 40px;
+            }
+
+            .work-header h2 {
+                font-size: 36px;
+            }
+
+            .work-timeline {
+                padding: 10px 0;
+            }
+
+            .work-timeline::before {
+                top: 50px;
+                left: 30px;
+                right: 30px;
+            }
+
+            .work-step-item .step-circle {
+                width: 64px;
+                height: 64px;
+                font-size: 26px;
             }
 
             .service-page {
@@ -2633,32 +3217,8 @@
                 padding: 28px 24px;
             }
 
-            .faq-wrapper {
-                flex-direction: column;
-                gap: 40px;
-            }
-
-            .faq-left {
-                max-width: 100%;
-            }
-
-            .faq-right {
-                flex: 1;
-                width: 100%;
-                position: static;
-                align-self: center;
-                justify-content: center;
-            }
-
-            .faq-right img {
-                max-width: 300px;
-                margin: 0 auto;
-                padding-right: 0;
-                margin-right: 0;
-            }
-
-            .faq-section .faq-title h2 {
-                font-size: 28px;
+            .portfolio-page {
+                padding: 20px;
             }
 
             .portfolio-box {
@@ -2667,11 +3227,18 @@
             }
 
             .portfolio-header h1 {
-                font-size: 40px;
+                font-size: 36px;
+            }
+
+            .portfolio-nav {
+                margin-bottom: 24px;
+            }
+
+            .portfolio-item {
+                flex: 0 0 calc(50% - 10px);
             }
 
             .portfolio-grid {
-                grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
 
@@ -2681,11 +3248,6 @@
 
             .portfolio-item .portfolio-body {
                 padding: 18px 18px 22px;
-            }
-
-            .portfolio-bottom {
-                flex-direction: column;
-                text-align: center;
             }
 
             .testimonial-page {
@@ -2711,6 +3273,36 @@
                 width: 60px;
             }
 
+            .faq-page {
+                padding: 80px 40px 40px;
+            }
+
+            .faq-page-header h1 {
+                font-size: 36px;
+            }
+
+            .faq-wrapper-new {
+                gap: 40px;
+            }
+
+            .faq-right-new {
+                flex: 0 0 240px;
+            }
+
+            .faq-right-new img {
+                max-width: 240px;
+                margin-right: -20px;
+                padding-right: 15px;
+            }
+
+            .banner-cta-content h2 {
+                font-size: 28px;
+            }
+
+            .banner-cta-content p {
+                font-size: 14px;
+            }
+
             .footer-contact {
                 padding: 40px 30px 30px;
                 min-height: auto;
@@ -2734,7 +3326,6 @@
             }
         }
 
-        /* === DESKTOP KECIL (1025px - 1200px) === */
         @media (min-width: 1025px) and (max-width: 1200px) {
             .hero-headline {
                 font-size: 48px;
@@ -2767,6 +3358,10 @@
                 border-radius: 28px;
             }
 
+            .why-content h2 {
+                font-size: 36px;
+            }
+
             .paket-grid {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 24px;
@@ -2776,32 +3371,45 @@
                 font-size: 40px;
             }
 
-            .faq-wrapper {
-                gap: 30px;
+            .work-header h2 {
+                font-size: 40px;
             }
 
-            .faq-right {
-                flex: 0 0 240px;
+            .work-timeline {
+                padding: 10px 0;
             }
 
-            .faq-right img {
-                max-width: 240px;
-                margin-right: -20px;
-                padding-right: 15px;
+            .work-timeline::before {
+                top: 50px;
+                left: 40px;
+                right: 40px;
             }
 
-            .portfolio-header h1 {
-                font-size: 48px;
+            .work-step-item .step-circle {
+                width: 72px;
+                height: 72px;
+                font-size: 28px;
             }
 
-            .portfolio-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 24px;
+            .portfolio-page {
+                padding: 22px;
             }
 
             .portfolio-box {
                 padding: 50px 40px 40px;
                 border-radius: 28px;
+            }
+
+            .portfolio-header h1 {
+                font-size: 40px;
+            }
+
+            .portfolio-item {
+                flex: 0 0 calc(33.333% - 16px);
+            }
+
+            .portfolio-grid {
+                gap: 24px;
             }
 
             .portfolio-item .portfolio-image {
@@ -2821,12 +3429,23 @@
                 width: 80px;
             }
 
+            .faq-page-header h1 {
+                font-size: 40px;
+            }
+
+            .faq-right-new {
+                flex: 0 0 260px;
+            }
+
+            .faq-right-new img {
+                max-width: 260px;
+            }
+
             .footer-container {
                 gap: 20px;
             }
         }
 
-        /* ===== OVERLAY ===== */
         .overlay {
             display: none;
             position: fixed;
@@ -2843,7 +3462,6 @@
             display: block;
         }
 
-        /* ===== KEAMANAN: Mencegah inspect element & save image ===== */
         img {
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -2852,7 +3470,6 @@
             user-drag: none;
         }
 
-        /* Mencegah long press pada mobile */
         * {
             -webkit-touch-callout: none;
         }
@@ -2863,7 +3480,7 @@
     <!-- ===== OVERLAY ===== -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- ===== HEADER ===== -->
+    <!-- ===== HEADER - FIXED ===== -->
     <header id="header">
         <div class="left-section">
             <img src="ikon.webp" alt="Profile" class="profile-photo" />
@@ -2878,6 +3495,7 @@
                     <li><a href="#service">Service</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#testimonial">Testimonial</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -2889,6 +3507,12 @@
             </button>
         </div>
     </header>
+
+    <!-- ===== FLOATING CUSTOMER SERVICE BUTTON ===== -->
+    <a href="#" class="float-btn" id="floatBtn" aria-label="Customer Service">
+        <span class="pulse"></span>
+        <i class="fas fa-headset"></i>
+    </a>
 
     <!-- ===== HOME / HERO ===== -->
     <section class="hero" id="home">
@@ -2979,11 +3603,9 @@
         </div>
     </section>
 
-    <!-- ===== ABOUT PAGE ===== -->
+    <!-- ===== ABOUT PAGE - PUTIH ===== -->
     <section class="about-page" id="about">
         <div class="about-box" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
-            <canvas id="particles-about"></canvas>
-
             <div class="about-content">
                 <div class="about-header">
                     <span class="badge">✦ Tentang Kami</span>
@@ -3012,21 +3634,60 @@
                     </div>
                 </div>
 
-                <div class="about-bottom">
-                    <div class="text">
-                        <h3>Ready to grow your business?</h3>
-                        <p>Mari bawa bisnis Anda ke level selanjutnya bersama FLEXUS.</p>
+                <!-- ===== KENAPA HARUS KAMI ===== -->
+                <div class="why-section-new" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="why-wrapper">
+                        <div class="why-image" data-aos="fade-right" data-aos-duration="600" data-aos-delay="150">
+                            <img src="why.webp" alt="Kenapa Harus FLEXUS" />
+                        </div>
+
+                        <div class="why-content" data-aos="fade-left" data-aos-duration="600" data-aos-delay="200">
+                            <span class="badge">✦ Kenapa Harus Kami?</span>
+                            <h2>Alasan <span>Memilih</span> FLEXUS</h2>
+                            <p class="why-desc">
+                                Kami bukan sekadar pembuat website, tapi mitra pertumbuhan bisnis digital Anda. 
+                                Dengan pengalaman dan dedikasi, kami hadir untuk memberikan yang terbaik.
+                            </p>
+
+                            <div class="why-list">
+                                <div class="why-list-item">
+                                    <span class="list-icon"><i class="fas fa-bolt"></i></span>
+                                    Kecepatan & Performa
+                                </div>
+                                <div class="why-list-item">
+                                    <span class="list-icon"><i class="fas fa-shield-alt"></i></span>
+                                    Keamanan Terjamin
+                                </div>
+                                <div class="why-list-item">
+                                    <span class="list-icon"><i class="fas fa-hand-holding-heart"></i></span>
+                                    Dukungan Personal
+                                </div>
+                                <div class="why-list-item">
+                                    <span class="list-icon"><i class="fas fa-code"></i></span>
+                                    Teknologi Terkini
+                                </div>
+                                <div class="why-list-item">
+                                    <span class="list-icon"><i class="fas fa-mobile-alt"></i></span>
+                                    Responsif & Mobile First
+                                </div>
+                                <div class="why-list-item">
+                                    <span class="list-icon"><i class="fas fa-clock"></i></span>
+                                    Tepat Waktu
+                                </div>
+                            </div>
+
+                            <a href="#service" class="btn-why">
+                                <i class="fas fa-arrow-right"></i>
+                                Mulai Sekarang
+                            </a>
+                        </div>
                     </div>
-                    <a href="#" class="btn-about" id="btnHubungiAbout">
-                        <i class="fas fa-arrow-right"></i>
-                        Hubungi Kami
-                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-     <!-- ===== SERVICE PAGE ===== -->
+    <!-- ===== SERVICE PAGE - PUTIH ===== -->
     <section class="service-page" id="service">
         <div class="service-container">
             <div class="service-header" data-aos="fade-down" data-aos-duration="800">
@@ -3078,72 +3739,53 @@
                         <li><i class="fas fa-check"></i> Website kompleks Halaman</li>
                         <li><i class="fas fa-check"></i> Desain Custom & Animasi</li>
                         <li><i class="fas fa-check"></i> Domain 1 Thn</li>
-                        <li><i class="fas fa-check"></i> SEO Basic & Optimal web
+                        <li><i class="fas fa-check"></i> SEO Basic & Optimal web</li>
                         <li><i class="fas fa-check"></i> Support 30 Hari</li>
                     </ul>
                     <a href="#" class="btn-paket" data-paket="Enterprise">Pilih Paket</a>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- FAQ -->
-            <div class="faq-section" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                <div class="faq-wrapper">
-                    <div class="faq-left">
-                        <div class="faq-title">
-                            <h2>Pertanyaan Umum</h2>
-                            <p>Jawaban atas pertanyaan yang sering diajukan tentang layanan kami.</p>
-                        </div>
+    <!-- ===== LANGKAH KERJA - PUTIH ===== -->
+    <section class="work-steps" id="work">
+        <div class="work-container">
+            <div class="work-header" data-aos="fade-up" data-aos-duration="800">
+                <span class="badge">✦ Proses Kerja</span>
+                <h2>Bagaimana <span>Kami Bekerja</span></h2>
+                <p>Langkah-langkah yang kami lalui untuk mewujudkan website impian Anda.</p>
+            </div>
 
-                        <div class="faq-item active">
-                            <div class="faq-question">
-                                <h3>Berapa lama waktu pengerjaan website?</h3>
-                                <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Waktu pengerjaan berkisar antara 3-14 hari kerja, tergantung pada kompleksitas proyek dan paket yang dipilih.</p>
-                            </div>
-                        </div>
+            <div class="work-timeline" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                <div class="work-step-item" data-aos="fade-up" data-aos-duration="500" data-aos-delay="150">
+                    <div class="step-circle"><i class="fas fa-comments"></i></div>
+                    <h3>Konsultasi</h3>
+                    <p>Diskusi kebutuhan</p>
+                </div>
 
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>Apakah saya bisa request desain kustom?</h3>
-                                <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Tentu! Kami menyediakan desain kustom sesuai dengan brand dan kebutuhan bisnis Anda.</p>
-                            </div>
-                        </div>
+                <div class="work-step-item" data-aos="fade-up" data-aos-duration="500" data-aos-delay="250">
+                    <div class="step-circle"><i class="fas fa-pencil-ruler"></i></div>
+                    <h3>Perencanaan</h3>
+                    <p>Strategi & desain</p>
+                </div>
 
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>Apakah website sudah mobile-friendly?</h3>
-                                <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Ya, semua website yang kami buat sudah responsive mobile mode.</p>
-                            </div>
-                        </div>
+                <div class="work-step-item" data-aos="fade-up" data-aos-duration="500" data-aos-delay="350">
+                    <div class="step-circle"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Eksekusi</h3>
+                    <p>Pengembangan</p>
+                </div>
 
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <h3>Bagaimana cara memulai proyek dengan FLEXUS?</h3>
-                                <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Anda bisa menghubungi kami melalui tombol "Konsultasi Gratis" atau "Hubungi Kami" untuk konsultasi awal. atau juga bisa kirim pesan langsung yang sudah di sediakan di footer.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="faq-right">
-                        <img src="faq.webp" alt="FAQ Illustration" />
-                    </div>
+                <div class="work-step-item" data-aos="fade-up" data-aos-duration="500" data-aos-delay="450">
+                    <div class="step-circle"><i class="fas fa-rocket"></i></div>
+                    <h3>Launch & Support</h3>
+                    <p>Peluncuran</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== PORTFOLIO PAGE ===== -->
+    <!-- ===== PORTFOLIO PAGE - PUTIH ===== -->
     <section class="portfolio-page" id="portfolio">
         <div class="portfolio-box" data-aos="zoom-in-up" data-aos-duration="1000">
             <div class="portfolio-content">
@@ -3152,87 +3794,83 @@
                     <h1>Karya <span>Terbaik</span> Kami</h1>
                     <p>
                         Berikut adalah beberapa proyek website yang telah kami selesaikan 
-                        untuk berbagai klien dari berbagai industri.
+                        untuk berbagai klien.
                     </p>
                 </div>
 
-                <div class="portfolio-grid">
-                    <div class="portfolio-item" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
-                        <img src="https://picsum.photos/seed/ecommerce/600/400" alt="E-Commerce Store" class="portfolio-image" />
-                        <div class="portfolio-body">
-                            <h3>E-Commerce Store</h3>
-                            <div class="portfolio-date">Januari 2025</div>
-                            <p class="portfolio-desc">Platform belanja modern dengan sistem pembayaran terintegrasi dan manajemen produk.</p>
-                            <a href="#" class="btn-visit" data-url="https://example.com">Visit Website</a>
-                        </div>
-                    </div>
-
-                    <div class="portfolio-item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
-                        <img src="https://picsum.photos/seed/company/600/400" alt="Company Profile" class="portfolio-image" />
-                        <div class="portfolio-body">
-                            <h3>Company Profile</h3>
-                            <div class="portfolio-date">Februari 2025</div>
-                            <p class="portfolio-desc">Website profesional untuk perusahaan teknologi dengan desain premium dan informatif.</p>
-                            <a href="#" class="btn-visit" data-url="https://example.com">Visit Website</a>
-                        </div>
-                    </div>
-
-                    <div class="portfolio-item" data-aos="fade-left" data-aos-duration="600" data-aos-delay="300">
-                        <img src="https://picsum.photos/seed/elearning/600/400" alt="E-Learning Platform" class="portfolio-image" />
-                        <div class="portfolio-body">
-                            <h3>E-Learning Platform</h3>
-                            <div class="portfolio-date">Maret 2025</div>
-                            <p class="portfolio-desc">Sistem pembelajaran online dengan fitur kelas virtual dan materi interaktif.</p>
-                            <a href="#" class="btn-visit" data-url="https://example.com">Visit Website</a>
-                        </div>
-                    </div>
-
-                    <div class="portfolio-item" data-aos="fade-right" data-aos-duration="600" data-aos-delay="150">
-                        <img src="https://picsum.photos/seed/hotel/600/400" alt="Hotel Booking" class="portfolio-image" />
-                        <div class="portfolio-body">
-                            <h3>Hotel Booking System</h3>
-                            <div class="portfolio-date">April 2025</div>
-                            <p class="portfolio-desc">Website pemesanan hotel dengan sistem reservasi real-time dan manajemen kamar.</p>
-                            <a href="#" class="btn-visit" data-url="https://example.com">Visit Website</a>
-                        </div>
-                    </div>
-
-                    <div class="portfolio-item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="250">
-                        <img src="https://picsum.photos/seed/restaurant/600/400" alt="Restaurant Digital" class="portfolio-image" />
-                        <div class="portfolio-body">
-                            <h3>Restaurant Digital</h3>
-                            <div class="portfolio-date">Mei 2025</div>
-                            <p class="portfolio-desc">Website restoran dengan menu digital interaktif dan sistem pemesanan online.</p>
-                            <a href="#" class="btn-visit" data-url="https://example.com">Visit Website</a>
-                        </div>
-                    </div>
-
-                    <div class="portfolio-item" data-aos="fade-left" data-aos-duration="600" data-aos-delay="350">
-                        <img src="https://picsum.photos/seed/landing/600/400" alt="Corporate Landing" class="portfolio-image" />
-                        <div class="portfolio-body">
-                            <h3>Corporate Landing Page</h3>
-                            <div class="portfolio-date">Juni 2025</div>
-                            <p class="portfolio-desc">Landing page modern dan elegan untuk campaign marketing perusahaan.</p>
-                            <a href="#" class="btn-visit" data-url="https://example.com">Visit Website</a>
-                        </div>
-                    </div>
+                <div class="portfolio-nav">
+                    <a href="#" class="btn-nav" id="prevProject"><</a>
+                    <a href="#" class="btn-nav" id="nextProject">></a>
                 </div>
 
-                <div class="portfolio-bottom">
-                    <div class="text">
-                        <h3>Ingin hasil seperti ini?</h3>
-                        <p>Mari kita wujudkan website impian bisnis Anda.</p>
+                <div class="portfolio-slider-wrapper">
+                    <div class="portfolio-grid" id="portfolioGrid">
+                        <div class="portfolio-item" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
+                            <img src="https://picsum.photos/seed/ecommerce/600/400" alt="E-Commerce Store" class="portfolio-image" />
+                            <div class="portfolio-body">
+                                <h3>E-Commerce Store</h3>
+                                <div class="portfolio-date">Januari 2025</div>
+                                <p class="portfolio-desc">Platform belanja modern dengan sistem pembayaran terintegrasi dan manajemen produk.</p>
+                                <a href="#" class="btn-visit" data-url="https://example.com">Visit Website</a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+                            <img src="https://picsum.photos/seed/company/600/400" alt="Company Profile" class="portfolio-image" />
+                            <div class="portfolio-body">
+                                <h3>Company Profile</h3>
+                                <div class="portfolio-date">Februari 2025</div>
+                                <p class="portfolio-desc">Website profesional untuk perusahaan teknologi dengan desain premium dan informatif.</p>
+                                <a href="#" class="btn-visit" data-url="https://example.com">Visit Website</a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-item" data-aos="fade-left" data-aos-duration="600" data-aos-delay="300">
+                            <img src="https://picsum.photos/seed/elearning/600/400" alt="E-Learning Platform" class="portfolio-image" />
+                            <div class="portfolio-body">
+                                <h3>E-Learning Platform</h3>
+                                <div class="portfolio-date">Maret 2025</div>
+                                <p class="portfolio-desc">Sistem pembelajaran online dengan fitur kelas virtual dan materi interaktif.</p>
+                                <a href="#" class="btn-visit" data-url="https://example.com">Visit Website</a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-item" data-aos="fade-right" data-aos-duration="600" data-aos-delay="150">
+                            <img src="https://picsum.photos/seed/hotel/600/400" alt="Hotel Booking" class="portfolio-image" />
+                            <div class="portfolio-body">
+                                <h3>Hotel Booking System</h3>
+                                <div class="portfolio-date">April 2025</div>
+                                <p class="portfolio-desc">Website pemesanan hotel dengan sistem reservasi real-time dan manajemen kamar.</p>
+                                <a href="#" class="btn-visit" data-url="https://example.com">Visit Website</a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="250">
+                            <img src="https://picsum.photos/seed/restaurant/600/400" alt="Restaurant Digital" class="portfolio-image" />
+                            <div class="portfolio-body">
+                                <h3>Restaurant Digital</h3>
+                                <div class="portfolio-date">Mei 2025</div>
+                                <p class="portfolio-desc">Website restoran dengan menu digital interaktif dan sistem pemesanan online.</p>
+                                <a href="#" class="btn-visit" data-url="https://example.com">Visit Website</a>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-item" data-aos="fade-left" data-aos-duration="600" data-aos-delay="350">
+                            <img src="https://picsum.photos/seed/landing/600/400" alt="Corporate Landing" class="portfolio-image" />
+                            <div class="portfolio-body">
+                                <h3>Corporate Landing Page</h3>
+                                <div class="portfolio-date">Juni 2025</div>
+                                <p class="portfolio-desc">Landing page modern dan elegan untuk campaign marketing perusahaan.</p>
+                                <a href="#" class="btn-visit" data-url="https://example.com">Visit Website</a>
+                            </div>
+                        </div>
                     </div>
-                    <a href="#" class="btn-portfolio" id="btnKonsultasiPortfolio">
-                        <i class="fas fa-arrow-right"></i>
-                        Konsultasi Sekarang
-                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== TESTIMONIAL PAGE ===== -->
+    <!-- ===== TESTIMONIAL PAGE - PUTIH ===== -->
     <section class="testimonial-page" id="testimonial">
         <div class="testimonial-container" data-aos="fade-up" data-aos-duration="800">
             <div class="testimonial-page-header">
@@ -3441,12 +4079,83 @@
         </div>
     </section>
 
-    <!-- ===== BANNER 16:5 ===== -->
-    <section class="banner-section">
+    <!-- ===== FAQ PAGE - PUTIH ===== -->
+    <section class="faq-page" id="faq">
+        <div class="faq-container">
+            <div class="faq-page-header" data-aos="fade-up" data-aos-duration="800">
+                <span class="badge">✦ FAQ</span>
+                <h1>Pertanyaan <span>Umum</span></h1>
+                <p>Jawaban atas pertanyaan yang sering diajukan tentang layanan kami.</p>
+            </div>
+
+            <div class="faq-wrapper-new" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                <div class="faq-left-new">
+                    <div class="faq-item-card active">
+                        <div class="faq-question-card">
+                            <h3>Berapa lama waktu pengerjaan website?</h3>
+                            <span class="faq-icon-card"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer-card">
+                            <p>Waktu pengerjaan berkisar antara 3-14 hari kerja, tergantung pada kompleksitas proyek dan paket yang dipilih.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item-card">
+                        <div class="faq-question-card">
+                            <h3>Apakah saya bisa request desain kustom?</h3>
+                            <span class="faq-icon-card"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer-card">
+                            <p>Tentu! Kami menyediakan desain kustom sesuai dengan brand dan kebutuhan bisnis Anda.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item-card">
+                        <div class="faq-question-card">
+                            <h3>Apakah website sudah mobile-friendly?</h3>
+                            <span class="faq-icon-card"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer-card">
+                            <p>Ya, semua website yang kami buat sudah responsive mobile mode.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item-card">
+                        <div class="faq-question-card">
+                            <h3>Bagaimana cara memulai proyek dengan FLEXUS?</h3>
+                            <span class="faq-icon-card"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer-card">
+                            <p>Anda bisa menghubungi kami melalui tombol "Konsultasi Gratis" atau "Hubungi Kami" untuk konsultasi awal. atau juga bisa kirim pesan langsung yang sudah di sediakan di footer.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-right-new">
+                    <img src="faq.webp" alt="FAQ Illustration" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BANNER CTA - PUTIH ===== -->
+    <section class="banner-cta">
+        <div class="banner-cta-content" data-aos="fade-up" data-aos-duration="800">
+            <h2>Siap Membangun Website <span>Impian</span> Anda?</h2>
+            <p>Mulai perjalanan digital bisnis Anda bersama FLEXUS. Dapatkan website profesional dengan harga terjangkau.</p>
+            <div class="banner-cta-buttons">
+                <a href="#service" class="btn-cta-primary">Pilih Paket</a>
+                <a href="#contact" class="btn-cta-secondary">Hubungi Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOTO 16:5 KEDUA ===== -->
+    <section class="banner-image-second">
         <img src="brend.webp" alt="Banner FLEXUS" />
     </section>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- ===== FOOTER - TETAP HITAM ===== -->
     <footer class="footer-contact" id="contact" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
         <div class="footer-container">
             <div class="footer-brand" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
@@ -3472,6 +4181,7 @@
                     <li><a href="#service"><i class="fas fa-chevron-right"></i> Service</a></li>
                     <li><a href="#portfolio"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
                     <li><a href="#testimonial"><i class="fas fa-chevron-right"></i> Testimonial</a></li>
+                    <li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a></li>
                 </ul>
             </div>
 
@@ -3525,9 +4235,6 @@
             disable: false
         });
 
-        // ============================================================
-        // WHATSAPP FUNCTION
-        // ============================================================
         const waNumber = '6289684219904';
 
         function openWhatsApp(text) {
@@ -3535,27 +4242,18 @@
             window.open(url, '_blank');
         }
 
-        // ============================================================
-        // HOME: Konsultasi Gratis
-        // ============================================================
         document.getElementById('btnKonsultasiHome').addEventListener('click', function(e) {
             e.preventDefault();
             const text = 'halo saya dari website ingin konsultasi webset yang ingin saya buat';
             openWhatsApp(text);
         });
 
-        // ============================================================
-        // ABOUT: Hubungi Kami
-        // ============================================================
-        document.getElementById('btnHubungiAbout').addEventListener('click', function(e) {
+        document.getElementById('floatBtn').addEventListener('click', function(e) {
             e.preventDefault();
             const text = 'halo saya dari website ingin konsultasi webset yang ingin saya buat';
             openWhatsApp(text);
         });
 
-        // ============================================================
-        // SERVICE: Pilih Paket
-        // ============================================================
         document.querySelectorAll('.btn-paket').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -3565,9 +4263,6 @@
             });
         });
 
-        // ============================================================
-        // PORTFOLIO: Visit Website
-        // ============================================================
         document.querySelectorAll('.btn-visit').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -3576,26 +4271,11 @@
             });
         });
 
-        // ============================================================
-        // PORTFOLIO: Konsultasi Sekarang
-        // ============================================================
-        document.getElementById('btnKonsultasiPortfolio').addEventListener('click', function(e) {
-            e.preventDefault();
-            const text = 'halo saya dari website ingin konsultasi webset yang ingin saya buat';
-            openWhatsApp(text);
-        });
-
-        // ============================================================
-        // FOOTER: TikTok
-        // ============================================================
         document.getElementById('btnTikTok').addEventListener('click', function(e) {
             e.preventDefault();
             window.open('https://www.tiktok.com', '_blank');
         });
 
-        // ============================================================
-        // FOOTER: Form Kirim Pesan
-        // ============================================================
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -3611,110 +4291,6 @@
             }
         });
 
-        // ============================================================
-        // HEADER HIDE/SHOW ON SCROLL
-        // ============================================================
-        const header = document.getElementById('header');
-        let lastScrollY = window.scrollY;
-        let ticking = false;
-
-        function handleScroll() {
-            const currentScrollY = window.scrollY;
-
-            if (currentScrollY > lastScrollY && currentScrollY > 80) {
-                header.classList.add('hidden');
-            } else if (currentScrollY < lastScrollY) {
-                header.classList.remove('hidden');
-            }
-
-            lastScrollY = currentScrollY;
-            ticking = false;
-        }
-
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    handleScroll();
-                });
-                ticking = true;
-            }
-        });
-
-        // ============================================================
-        // PARTICLES FOR ABOUT BOX
-        // ============================================================
-        const canvas = document.getElementById('particles-about');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let animationId;
-
-        function resizeCanvas() {
-            const rect = canvas.parentElement.getBoundingClientRect();
-            canvas.width = rect.width;
-            canvas.height = rect.height;
-        }
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2.5 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.3;
-                this.speedY = (Math.random() - 0.5) * 0.3;
-                this.opacity = Math.random() * 0.4 + 0.05;
-            }
-
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                if (this.x > canvas.width) this.x = 0;
-                if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0;
-                if (this.y < 0) this.y = canvas.height;
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            const count = Math.min(60, Math.floor((canvas.width * canvas.height) / 20000));
-            particles = [];
-            for (let i = 0; i < count; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            animationId = requestAnimationFrame(animateParticles);
-        }
-
-        function init() {
-            resizeCanvas();
-            initParticles();
-            animateParticles();
-        }
-
-        window.addEventListener('resize', () => {
-            resizeCanvas();
-            initParticles();
-        });
-
-        setTimeout(init, 100);
-
-        // ============================================================
-        // TESTIMONIAL (Hero)
-        // ============================================================
         const testimonials = [
             {
                 name: 'Sarah Chen',
@@ -3802,15 +4378,12 @@
 
         intervalId = setInterval(nextTestimonial, 4000);
 
-        // ============================================================
-        // FAQ ACCORDION
-        // ============================================================
-        document.querySelectorAll('.faq-item').forEach(item => {
-            const question = item.querySelector('.faq-question');
+        document.querySelectorAll('.faq-item-card').forEach(item => {
+            const question = item.querySelector('.faq-question-card');
             question.addEventListener('click', () => {
                 const isActive = item.classList.contains('active');
                 
-                document.querySelectorAll('.faq-item').forEach(i => {
+                document.querySelectorAll('.faq-item-card').forEach(i => {
                     i.classList.remove('active');
                 });
                 
@@ -3820,9 +4393,6 @@
             });
         });
 
-        // ============================================================
-        // NAVBAR SMOOTH SCROLL
-        // ============================================================
         document.querySelectorAll('nav ul li a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
@@ -3844,9 +4414,71 @@
             });
         });
 
-        // ============================================================
-        // HAMBURGER
-        // ============================================================
+        // ===== PORTFOLIO NAVIGASI + SLIDE ANIMASI =====
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const totalItems = portfolioItems.length;
+        const itemsPerPage = 3;
+        let currentStart = 0;
+        const maxStart = totalItems - itemsPerPage;
+        let isTransitioning = false;
+
+        const grid = document.getElementById('portfolioGrid');
+
+        function updatePortfolio(direction) {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
+            const newStart = currentStart + direction;
+            if (newStart < 0 || newStart > maxStart) {
+                isTransitioning = false;
+                return;
+            }
+
+            const offset = - (newStart * (100 / itemsPerPage));
+            grid.style.transform = 'translateX(' + offset + '%)';
+
+            currentStart = newStart;
+
+            updateButtons();
+
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 500);
+        }
+
+        function updateButtons() {
+            const prevBtn = document.getElementById('prevProject');
+            const nextBtn = document.getElementById('nextProject');
+
+            if (currentStart === 0) {
+                prevBtn.classList.add('disabled');
+            } else {
+                prevBtn.classList.remove('disabled');
+            }
+
+            if (currentStart >= maxStart) {
+                nextBtn.classList.add('disabled');
+            } else {
+                nextBtn.classList.remove('disabled');
+            }
+        }
+
+        document.getElementById('prevProject').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (currentStart > 0 && !isTransitioning) {
+                updatePortfolio(-1);
+            }
+        });
+
+        document.getElementById('nextProject').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (currentStart < maxStart && !isTransitioning) {
+                updatePortfolio(1);
+            }
+        });
+
+        updateButtons();
+
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
         const overlay = document.getElementById('overlay');
