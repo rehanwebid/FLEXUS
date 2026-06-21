@@ -24,7 +24,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="FLEXUS - Bangun Website Profesional" />
     <meta name="twitter:description" content="FLEXUS adalah platform digital independen yang berfokus pada solusi website modern, cepat, dan terpercaya untuk bisnis Anda." />
-    <meta name="twitter:image" content="https://flexus.space/tab.web" />
+    <meta name="twitter:image" content="https://flexus.space/tab.webp" />
     
     <!-- ===== FAVICON ===== -->
     <link rel="icon" type="image/png" sizes="16x16" href="tab.webp" />
@@ -939,13 +939,13 @@
 
         .portfolio-grid {
             display: flex;
-            gap: 30px;
+            gap: 0;
             transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             will-change: transform;
         }
 
         .portfolio-item {
-            flex: 0 0 calc(33.333% - 20px);
+            flex: 0 0 33.333%;
             background: #ffffff;
             border-radius: 16px;
             border: 1px solid #e8e8e8;
@@ -964,7 +964,7 @@
 
         .portfolio-item .portfolio-image {
             width: 100%;
-            height: 200px;
+            aspect-ratio: 16/9;
             object-fit: cover;
             display: block;
             pointer-events: none;
@@ -2183,10 +2183,12 @@
         /* ============================================================ */
         /* ========== RESPONSIVE - MOBILE ========== */
         /* ============================================================ */
-        /* MOBILE: sembunyikan gambar di "Kenapa Harus Kami?" */
         @media (max-width: 768px) {
             .why-image {
-                display: none !important;
+                display: block !important;
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-bottom: 20px;
             }
             
             .why-wrapper {
@@ -2377,15 +2379,15 @@
             }
 
             .portfolio-item {
-                flex: 0 0 calc(100% - 0px);
+                flex: 0 0 100%;
             }
 
             .portfolio-grid {
-                gap: 20px;
+                gap: 0;
             }
 
             .portfolio-item .portfolio-image {
-                height: 160px;
+                aspect-ratio: 16/9;
             }
 
             .why-wrapper {
@@ -2447,24 +2449,61 @@
 
             .work-timeline {
                 flex-direction: column;
-                align-items: center;
-                gap: 30px;
+                align-items: flex-start;
+                gap: 0;
                 padding: 10px 0;
+                position: relative;
             }
 
             .work-timeline::before {
-                display: none;
+                display: block;
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 32px;
+                width: 2px;
+                height: 100%;
+                background: #cccccc;
+                z-index: 0;
             }
 
             .work-step-item {
                 width: 100%;
-                max-width: 280px;
+                max-width: 100%;
+                display: flex;
+                align-items: flex-start;
+                gap: 16px;
+                text-align: left;
+                padding: 16px 0;
+                position: relative;
+                z-index: 1;
+                flex-wrap: wrap;
             }
 
             .work-step-item .step-circle {
                 width: 64px;
                 height: 64px;
                 font-size: 26px;
+                flex-shrink: 0;
+                margin: 0;
+            }
+
+            .work-step-item h3 {
+                font-family: 'Space Grotesk', sans-serif;
+                font-size: 16px;
+                font-weight: 600;
+                color: #000000;
+                margin-bottom: 4px;
+                width: calc(100% - 84px);
+            }
+
+            .work-step-item p {
+                font-size: 13px;
+                color: #666666;
+                line-height: 1.5;
+                max-width: 100%;
+                margin: 0;
+                padding-left: 84px;
             }
 
             .faq-page {
@@ -2638,11 +2677,11 @@
             }
 
             .portfolio-item {
-                flex: 0 0 calc(50% - 10px);
+                flex: 0 0 50%;
             }
 
             .portfolio-grid {
-                gap: 20px;
+                gap: 0;
             }
 
             .why-wrapper {
@@ -2965,7 +3004,7 @@
                 <div class="why-section-new" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
                     <div class="why-wrapper">
                         <div class="why-image" data-aos="fade-right" data-aos-duration="600" data-aos-delay="150">
-                            <img src="kenapa.webp" alt="Kenapa Harus FLEXUS" />
+                            <img src="kenpa.webp" alt="Kenapa Harus FLEXUS" />
                         </div>
 
                         <div class="why-content" data-aos="fade-left" data-aos-duration="600" data-aos-delay="200">
@@ -3131,7 +3170,6 @@
 
             <div class="faq-wrapper-new" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
                 <div class="faq-left-new">
-                    <!-- SEMUA FAQ TERTUTUP (tidak ada class "active") -->
                     <div class="faq-item-card">
                         <div class="faq-question-card">
                             <h3>Berapa lama waktu pengerjaan website?</h3>
@@ -3534,7 +3572,6 @@
         }
 
         function openWhatsAppCS() {
-            // TANPA PESAN OTOMATIS - LANGSUNG CHAT KOSONG
             const url = 'https://wa.me/' + waNumberCS;
             window.open(url, '_blank');
         }
@@ -3674,10 +3711,9 @@
             });
         });
 
-        // ===== PORTFOLIO =====
+        // ===== PORTFOLIO SLIDER - GESER 1 PER 1 =====
         const portfolioItems = document.querySelectorAll('.portfolio-item');
         const totalItems = portfolioItems.length;
-        let itemsPerPage = 3;
         let currentStart = 0;
         let isTransitioning = false;
         const grid = document.getElementById('portfolioGrid');
@@ -3697,7 +3733,7 @@
             isTransitioning = true;
 
             const itemsPerPageNow = getItemsPerPage();
-            const maxStartNow = Math.max(0, totalItems - itemsPerPageNow);
+            const maxStartNow = getMaxStart();
             const newStart = currentStart + direction;
 
             if (newStart < 0 || newStart > maxStartNow) {
@@ -3705,8 +3741,8 @@
                 return;
             }
 
-            const offset = -(newStart * (100 / itemsPerPageNow));
-            grid.style.transform = 'translateX(' + offset + '%)';
+            const offsetPercent = -(newStart * (100 / itemsPerPageNow));
+            grid.style.transform = 'translateX(' + offsetPercent + '%)';
             currentStart = newStart;
 
             updateButtons();
@@ -3733,12 +3769,12 @@
 
         function resetPortfolio() {
             const itemsPerPageNow = getItemsPerPage();
-            const maxStartNow = Math.max(0, totalItems - itemsPerPageNow);
+            const maxStartNow = getMaxStart();
             if (currentStart > maxStartNow) {
                 currentStart = maxStartNow;
             }
-            const offset = -(currentStart * (100 / itemsPerPageNow));
-            grid.style.transform = 'translateX(' + offset + '%)';
+            const offsetPercent = -(currentStart * (100 / itemsPerPageNow));
+            grid.style.transform = 'translateX(' + offsetPercent + '%)';
             updateButtons();
         }
 
@@ -3751,8 +3787,7 @@
 
         document.getElementById('nextProject').addEventListener('click', function(e) {
             e.preventDefault();
-            const maxStartNow = getMaxStart();
-            if (currentStart < maxStartNow && !isTransitioning) {
+            if (currentStart < getMaxStart() && !isTransitioning) {
                 updatePortfolio(1);
             }
         });
@@ -3801,8 +3836,8 @@
 
         function renderPaket(category) {
             const data = paketData[category] || paketData.landing;
-            const grid = document.getElementById('paketGrid');
-            grid.innerHTML = '';
+            const gridPaket = document.getElementById('paketGrid');
+            gridPaket.innerHTML = '';
 
             data.cards.forEach((card, index) => {
                 const cardDiv = document.createElement('div');
@@ -3833,7 +3868,7 @@
                     <a href="#" class="btn-paket" data-paket="${card.title}">Pilih Paket</a>
                 `;
 
-                grid.appendChild(cardDiv);
+                gridPaket.appendChild(cardDiv);
             });
 
             document.querySelectorAll('.btn-paket').forEach(btn => {
