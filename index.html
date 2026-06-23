@@ -100,6 +100,9 @@
             z-index: 1000;
             transition: all 0.3s ease;
             gap: 16px;
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
         }
 
         .left-section {
@@ -275,6 +278,9 @@
             transition: all 0.3s ease;
             text-decoration: none;
             cursor: pointer;
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
         }
 
         .float-btn:hover {
@@ -2184,6 +2190,10 @@
         /* ========== RESPONSIVE - MOBILE ========== */
         /* ============================================================ */
         @media (max-width: 768px) {
+            .testimonial-overlay {
+                display: none !important;
+            }
+
             .why-image {
                 display: block !important;
                 flex: 0 0 100%;
@@ -2200,7 +2210,6 @@
                 width: 100%;
             }
             
-            /* FAQ: sembunyikan gambar 4:5 */
             .faq-right-new {
                 display: none !important;
             }
@@ -2214,7 +2223,6 @@
                 width: 100%;
             }
 
-            /* Hero: gambar 1:1 full width di mobile */
             .hero-visual {
                 display: block !important;
                 width: 100%;
@@ -2276,7 +2284,6 @@
                 font-size: 14px;
             }
 
-            /* ===== HAMBURGER ===== */
             .hamburger {
                 display: flex !important;
             }
@@ -2423,19 +2430,38 @@
 
             .service-categories {
                 gap: 10px;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 8px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
             }
-
+            .service-categories::-webkit-scrollbar {
+                display: none;
+            }
             .service-categories .cat-item {
+                flex-shrink: 0;
+                white-space: nowrap;
                 font-size: 12px;
                 padding: 8px 18px;
             }
 
             .paket-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+                display: flex;
+                gap: 16px;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding-bottom: 8px;
             }
-
+            .paket-grid::-webkit-scrollbar {
+                display: none;
+            }
             .paket-card {
+                flex: 0 0 100%;
+                scroll-snap-align: start;
                 padding: 24px 20px;
             }
 
@@ -2752,16 +2778,13 @@
 </head>
 <body>
 
-    <!-- ===== OVERLAY ===== -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- ===== HEADER - FIXED ===== -->
     <header id="header">
         <div class="left-section">
             <img src="ikon.webp" alt="Profile" class="profile-photo" />
             <a href="#" class="brand">FLEXUS</a>
         </div>
-
         <div class="right-section">
             <nav>
                 <ul id="navMenu">
@@ -2774,68 +2797,38 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-
             <button class="hamburger" id="hamburger" aria-label="Toggle Navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
         </div>
     </header>
 
-    <!-- ===== FLOATING CUSTOMER SERVICE - NOMOR BARU ===== -->
     <a href="#" class="float-btn" id="floatBtn" aria-label="Customer Service">
         <span class="pulse"></span>
         <i class="fas fa-headset"></i>
     </a>
 
-    <!-- ===== HOME / HERO ===== -->
     <section class="hero" id="home">
         <div class="hero-content" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
             <span class="hero-badge">✦ Website Professional</span>
-            <h1 class="hero-headline">
-                Bangun Website<br /><span>Profesional</span><br />Bersama FLEXUS
-            </h1>
-            <p class="hero-subheadline">
-                Kami bantu bisnis Anda naik kelas dengan website modern, cepat, &amp; terpercaya.
-            </p>
+            <h1 class="hero-headline">Bangun Website<br /><span>Profesional</span><br />Bersama FLEXUS</h1>
+            <p class="hero-subheadline">Kami bantu bisnis Anda naik kelas dengan website modern, cepat, &amp; terpercaya.</p>
             <div class="hero-buttons">
-                <a href="#service" class="btn-primary">
-                    <i class="fas fa-rocket icon"></i>
-                    Mulai Sekarang
-                </a>
-                <a href="#" class="btn-secondary" id="btnKonsultasiHome">
-                    <i class="fas fa-comments icon"></i>
-                    Konsultasi Gratis
-                </a>
+                <a href="#service" class="btn-primary"><i class="fas fa-rocket icon"></i>Mulai Sekarang</a>
+                <a href="#" class="btn-secondary" id="btnKonsultasiHome"><i class="fas fa-comments icon"></i>Konsultasi Gratis</a>
             </div>
-
             <div class="team-section">
                 <p class="team-label">My Team:</p>
                 <div class="team-avatars">
-                    <div class="team-avatar">
-                        <img src="Braint.webp" alt="Human" />
-                        <span class="tooltip">Braint</span>
-                    </div>
-                    <div class="team-avatar">
-                        <img src="DeepSeek.webp" alt="DeepSeek" />
-                        <span class="tooltip">DeepSeek</span>
-                    </div>
-                    <div class="team-avatar">
-                        <img src="ChatGPT.webp" alt="ChatGPT" />
-                        <span class="tooltip">ChatGPT</span>
-                    </div>
-                    <div class="team-avatar">
-                        <img src="Sticth.webp" alt="Stitch" />
-                        <span class="tooltip">Stitch</span>
-                    </div>
+                    <div class="team-avatar"><img src="Braint.webp" alt="Human" /><span class="tooltip">Braint</span></div>
+                    <div class="team-avatar"><img src="DeepSeek.webp" alt="DeepSeek" /><span class="tooltip">DeepSeek</span></div>
+                    <div class="team-avatar"><img src="ChatGPT.webp" alt="ChatGPT" /><span class="tooltip">ChatGPT</span></div>
+                    <div class="team-avatar"><img src="Sticth.webp" alt="Stitch" /><span class="tooltip">Stitch</span></div>
                 </div>
             </div>
         </div>
-
         <div class="hero-visual" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
             <img src="home.webp" alt="Profile Hero" class="main-image" />
-
             <div class="testimonial-overlay" id="testimonialBox">
                 <div class="testimonial-content" id="testimonialContent">
                     <div class="testimonial-header">
@@ -2847,50 +2840,28 @@
                     </div>
                     <p class="testimonial-text" id="testimonialText">FLEXUS bikin website kami jadi cepat banget!</p>
                 </div>
-
                 <div class="testimonial-dots" id="testimonialDots">
-                    <span class="active" data-index="0"></span>
-                    <span data-index="1"></span>
-                    <span data-index="2"></span>
-                    <span data-index="3"></span>
-                    <span data-index="4"></span>
-                    <span data-index="5"></span>
-                    <span data-index="6"></span>
+                    <span class="active" data-index="0"></span><span data-index="1"></span><span data-index="2"></span><span data-index="3"></span><span data-index="4"></span><span data-index="5"></span><span data-index="6"></span>
                 </div>
             </div>
-
             <div class="stats-overlay">
-                <div class="stat-item">
-                    <div class="stat-number">7<span>+</span></div>
-                    <div class="stat-label">Berpengalaman</div>
-                </div>
+                <div class="stat-item"><div class="stat-number">7<span>+</span></div><div class="stat-label">Berpengalaman</div></div>
                 <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <div class="stat-number">120</div>
-                    <div class="stat-label">Website selesai</div>
-                </div>
+                <div class="stat-item"><div class="stat-number">120</div><div class="stat-label">Website selesai</div></div>
                 <div class="stat-divider"></div>
-                <div class="stat-item">
-                    <div class="stat-number">75</div>
-                    <div class="stat-label">Klayen happy</div>
-                </div>
+                <div class="stat-item"><div class="stat-number">75</div><div class="stat-label">Klayen happy</div></div>
             </div>
         </div>
     </section>
 
-    <!-- ===== ABOUT PAGE ===== -->
     <section class="about-page" id="about">
         <div class="about-box" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
             <div class="about-content">
                 <div class="about-header">
                     <span class="badge">✦ Tentang Kami</span>
                     <h1>Membangun <span>Masa Depan</span><br />Bersama Teknologi</h1>
-                    <p>
-                        FLEXUS adalah mitra digital Anda yang berkomitmen menghadirkan 
-                        solusi website modern, cepat, dan terpercaya untuk bisnis Anda.
-                    </p>
+                    <p>FLEXUS adalah mitra digital Anda yang berkomitmen menghadirkan solusi website modern, cepat, dan terpercaya untuk bisnis Anda.</p>
                 </div>
-
                 <div class="about-grid">
                     <div class="about-card" data-aos="flip-up" data-aos-duration="600" data-aos-delay="200">
                         <span class="icon"><i class="fas fa-code"></i></span>
@@ -2912,37 +2883,29 @@
         </div>
     </section>
 
-    <!-- ===== PORTFOLIO ===== -->
     <section class="portfolio-section" id="portfolio">
         <div class="portfolio-box" data-aos="zoom-in-up" data-aos-duration="1000">
             <div class="portfolio-content">
                 <div class="portfolio-header">
                     <span class="badge">✦ Portfolio</span>
                     <h1>Karya <span>Terbaik</span> Kami</h1>
-                    <p>
-                        Berikut adalah beberapa proyek website yang telah kami selesaikan 
-                        untuk berbagai klien.
-                    </p>
+                    <p>Berikut adalah beberapa proyek website yang telah kami selesaikan untuk berbagai klien.</p>
                 </div>
-
                 <div class="portfolio-nav">
                     <a href="#" class="btn-nav" id="prevProject"><</a>
                     <a href="#" class="btn-nav" id="nextProject">></a>
                 </div>
-
                 <div class="portfolio-slider-wrapper">
                     <div class="portfolio-grid" id="portfolioGrid">
                         <div class="portfolio-item">
-                            <img src="flexus.webp" alt="E-Commerce Store" class="portfolio-image" />
+                            <img src="flexus.webp" alt="FLEXUS" class="portfolio-image" />
                             <div class="portfolio-body">
                                 <h3>FLEXUS</h3>
                                 <div class="portfolio-date">Juni 2026</div>
-                                <p class="portfolio-desc">  FLEXUS adalah mitra digital Anda yang berkomitmen menghadirkan 
-                        solusi website modern, cepat, dan terpercaya untuk bisnis Anda.</p>
+                                <p class="portfolio-desc">FLEXUS adalah mitra digital Anda yang berkomitmen menghadirkan solusi website modern, cepat, dan terpercaya untuk bisnis Anda.</p>
                                 <a href="#" class="btn-visit" data-url="https://flexus.my.id">Visit Website</a>
                             </div>
                         </div>
-
                         <div class="portfolio-item">
                             <img src="https://picsum.photos/seed/company/600/400" alt="Company Profile" class="portfolio-image" />
                             <div class="portfolio-body">
@@ -2952,7 +2915,6 @@
                                 <a href="#" class="btn-visit" data-url="https://example.com">Visit Website</a>
                             </div>
                         </div>
-
                         <div class="portfolio-item">
                             <img src="https://picsum.photos/seed/elearning/600/400" alt="E-Learning Platform" class="portfolio-image" />
                             <div class="portfolio-body">
@@ -2962,7 +2924,6 @@
                                 <a href="#" class="btn-visit" data-url="https://example.com">Visit Website</a>
                             </div>
                         </div>
-
                         <div class="portfolio-item">
                             <img src="https://picsum.photos/seed/hotel/600/400" alt="Hotel Booking" class="portfolio-image" />
                             <div class="portfolio-body">
@@ -2972,7 +2933,6 @@
                                 <a href="#" class="btn-visit" data-url="https://example.com">Visit Website</a>
                             </div>
                         </div>
-
                         <div class="portfolio-item">
                             <img src="https://picsum.photos/seed/restaurant/600/400" alt="Restaurant Digital" class="portfolio-image" />
                             <div class="portfolio-body">
@@ -2982,7 +2942,6 @@
                                 <a href="#" class="btn-visit" data-url="https://example.com">Visit Website</a>
                             </div>
                         </div>
-
                         <div class="portfolio-item">
                             <img src="https://picsum.photos/seed/landing/600/400" alt="Corporate Landing" class="portfolio-image" />
                             <div class="portfolio-body">
@@ -2998,7 +2957,6 @@
         </div>
     </section>
 
-    <!-- ===== KENAPA HARUS KAMI ===== -->
     <section class="about-page" id="why">
         <div class="about-box" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
             <div class="about-content">
@@ -3007,46 +2965,19 @@
                         <div class="why-image" data-aos="fade-right" data-aos-duration="600" data-aos-delay="150">
                             <img src="kenapa.webp" alt="Kenapa Harus FLEXUS" />
                         </div>
-
                         <div class="why-content" data-aos="fade-left" data-aos-duration="600" data-aos-delay="200">
                             <span class="badge">✦ Kenapa Harus Kami?</span>
                             <h2>Alasan <span>Memilih</span> FLEXUS</h2>
-                            <p class="why-desc">
-                                Kami bukan sekadar pembuat website, tapi mitra pertumbuhan bisnis digital Anda. 
-                                Dengan pengalaman dan dedikasi, kami hadir untuk memberikan yang terbaik.
-                            </p>
-
+                            <p class="why-desc">Kami bukan sekadar pembuat website, tapi mitra pertumbuhan bisnis digital Anda. Dengan pengalaman dan dedikasi, kami hadir untuk memberikan yang terbaik.</p>
                             <div class="why-list">
-                                <div class="why-list-item">
-                                    <span class="list-icon"><i class="fas fa-bolt"></i></span>
-                                    Kecepatan & Performa
-                                </div>
-                                <div class="why-list-item">
-                                    <span class="list-icon"><i class="fas fa-shield-alt"></i></span>
-                                    Keamanan Terjamin
-                                </div>
-                                <div class="why-list-item">
-                                    <span class="list-icon"><i class="fas fa-hand-holding-heart"></i></span>
-                                    Dukungan Personal
-                                </div>
-                                <div class="why-list-item">
-                                    <span class="list-icon"><i class="fas fa-code"></i></span>
-                                    Teknologi Terkini
-                                </div>
-                                <div class="why-list-item">
-                                    <span class="list-icon"><i class="fas fa-mobile-alt"></i></span>
-                                    Responsif & Mobile First
-                                </div>
-                                <div class="why-list-item">
-                                    <span class="list-icon"><i class="fas fa-clock"></i></span>
-                                    Tepat Waktu
-                                </div>
+                                <div class="why-list-item"><span class="list-icon"><i class="fas fa-bolt"></i></span>Kecepatan & Performa</div>
+                                <div class="why-list-item"><span class="list-icon"><i class="fas fa-shield-alt"></i></span>Keamanan Terjamin</div>
+                                <div class="why-list-item"><span class="list-icon"><i class="fas fa-hand-holding-heart"></i></span>Dukungan Personal</div>
+                                <div class="why-list-item"><span class="list-icon"><i class="fas fa-code"></i></span>Teknologi Terkini</div>
+                                <div class="why-list-item"><span class="list-icon"><i class="fas fa-mobile-alt"></i></span>Responsif & Mobile First</div>
+                                <div class="why-list-item"><span class="list-icon"><i class="fas fa-clock"></i></span>Tepat Waktu</div>
                             </div>
-
-                            <a href="#service" class="btn-why">
-                                <i class="fas fa-arrow-right"></i>
-                                Mulai Sekarang
-                            </a>
+                            <a href="#service" class="btn-why"><i class="fas fa-arrow-right"></i>Mulai Sekarang</a>
                         </div>
                     </div>
                 </div>
@@ -3054,18 +2985,13 @@
         </div>
     </section>
 
-    <!-- ===== SERVICE PAGE ===== -->
     <section class="service-page" id="service">
         <div class="service-container">
             <div class="service-header" data-aos="fade-down" data-aos-duration="800">
                 <span class="badge">✦ Layanan Kami</span>
                 <h1>Solusi <span>Terbaik</span> untuk<br />Bisnis Anda</h1>
-                <p>
-                    Kami menyediakan berbagai layanan website profesional yang dirancang 
-                    untuk membantu bisnis Anda berkembang di era digital.
-                </p>
+                <p>Kami menyediakan berbagai layanan website profesional yang dirancang untuk membantu bisnis Anda berkembang di era digital.</p>
             </div>
-
             <div class="service-categories" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
                 <span class="cat-item active" data-category="landing">Landing Page</span>
                 <span class="cat-item" data-category="profile">Company Profile</span>
@@ -3073,7 +2999,6 @@
                 <span class="cat-item" data-category="portfolio">Portfolio</span>
                 <span class="cat-item" data-category="custom">Custom</span>
             </div>
-
             <div class="paket-grid" id="paketGrid">
                 <div class="paket-card" data-aos="fade-right" data-aos-duration="700" data-aos-delay="200">
                     <span class="icon"><i class="fas fa-seedling"></i></span>
@@ -3088,7 +3013,6 @@
                     </ul>
                     <a href="#" class="btn-paket" data-paket="Basic">Pilih Paket</a>
                 </div>
-
                 <div class="paket-card populer" data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">
                     <span class="populer-badge">Populer</span>
                     <span class="icon"><i class="fas fa-rocket"></i></span>
@@ -3104,7 +3028,6 @@
                     </ul>
                     <a href="#" class="btn-paket" data-paket="Business">Pilih Paket</a>
                 </div>
-
                 <div class="paket-card diskon" data-aos="fade-left" data-aos-duration="700" data-aos-delay="400">
                     <span class="icon"><i class="fas fa-crown"></i></span>
                     <h3>Enterprise</h3>
@@ -3123,7 +3046,6 @@
         </div>
     </section>
 
-    <!-- ===== WORK STEPS ===== -->
     <section class="work-steps" id="work">
         <div class="work-container">
             <div class="work-header" data-aos="fade-up" data-aos-duration="800">
@@ -3131,26 +3053,22 @@
                 <h2>Bagaimana <span>Kami Bekerja</span></h2>
                 <p>Langkah-langkah yang kami lalui untuk mewujudkan website impian Anda.</p>
             </div>
-
             <div class="work-timeline" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
                 <div class="work-step-item" data-aos="fade-up" data-aos-duration="500" data-aos-delay="150">
                     <div class="step-circle"><i class="fas fa-comments"></i></div>
                     <h3>Konsultasi & Briefing</h3>
                     <p>Diskusi mendalam untuk memahami kebutuhan, tujuan, dan visi website Anda.</p>
                 </div>
-
                 <div class="work-step-item" data-aos="fade-up" data-aos-duration="500" data-aos-delay="250">
                     <div class="step-circle"><i class="fas fa-pencil-ruler"></i></div>
                     <h3>Perencanaan & Desain</h3>
                     <p>Membuat strategi, wireframe, dan mockup desain yang sesuai dengan brand Anda.</p>
                 </div>
-
                 <div class="work-step-item" data-aos="fade-up" data-aos-duration="500" data-aos-delay="350">
                     <div class="step-circle"><i class="fas fa-laptop-code"></i></div>
                     <h3>Pengembangan & Coding</h3>
                     <p>Mengubah desain menjadi website fungsional dengan teknologi terkini.</p>
                 </div>
-
                 <div class="work-step-item" data-aos="fade-up" data-aos-duration="500" data-aos-delay="450">
                     <div class="step-circle"><i class="fas fa-rocket"></i></div>
                     <h3>Launch & Support</h3>
@@ -3160,7 +3078,6 @@
         </div>
     </section>
 
-    <!-- ===== FAQ ===== -->
     <section class="faq-page" id="faq">
         <div class="faq-container">
             <div class="faq-page-header" data-aos="fade-up" data-aos-duration="800">
@@ -3168,335 +3085,77 @@
                 <h1>Pertanyaan <span>Umum</span></h1>
                 <p>Jawaban atas pertanyaan yang sering diajukan tentang layanan kami.</p>
             </div>
-
             <div class="faq-wrapper-new" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
                 <div class="faq-left-new">
-                    <div class="faq-item-card">
-                        <div class="faq-question-card">
-                            <h3>Berapa lama waktu pengerjaan website?</h3>
-                            <span class="faq-icon-card"><i class="fas fa-chevron-down"></i></span>
-                        </div>
-                        <div class="faq-answer-card">
-                            <p>Waktu pengerjaan berkisar antara 3-14 hari kerja, tergantung pada kompleksitas proyek dan paket yang dipilih.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item-card">
-                        <div class="faq-question-card">
-                            <h3>Apakah saya bisa request desain kustom?</h3>
-                            <span class="faq-icon-card"><i class="fas fa-chevron-down"></i></span>
-                        </div>
-                        <div class="faq-answer-card">
-                            <p>Tentu! Kami menyediakan desain kustom sesuai dengan brand dan kebutuhan bisnis Anda.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item-card">
-                        <div class="faq-question-card">
-                            <h3>Apakah website sudah mobile-friendly?</h3>
-                            <span class="faq-icon-card"><i class="fas fa-chevron-down"></i></span>
-                        </div>
-                        <div class="faq-answer-card">
-                            <p>Ya, semua website yang kami buat sudah responsive mobile mode.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item-card">
-                        <div class="faq-question-card">
-                            <h3>Bagaimana cara memulai proyek dengan FLEXUS?</h3>
-                            <span class="faq-icon-card"><i class="fas fa-chevron-down"></i></span>
-                        </div>
-                        <div class="faq-answer-card">
-                            <p>Anda bisa menghubungi kami melalui tombol "Konsultasi Gratis" atau "Hubungi Kami" untuk konsultasi awal.</p>
-                        </div>
-                    </div>
+                    <div class="faq-item-card"><div class="faq-question-card"><h3>Berapa lama waktu pengerjaan website?</h3><span class="faq-icon-card"><i class="fas fa-chevron-down"></i></span></div><div class="faq-answer-card"><p>Waktu pengerjaan berkisar antara 3-14 hari kerja, tergantung pada kompleksitas proyek dan paket yang dipilih.</p></div></div>
+                    <div class="faq-item-card"><div class="faq-question-card"><h3>Apakah saya bisa request desain kustom?</h3><span class="faq-icon-card"><i class="fas fa-chevron-down"></i></span></div><div class="faq-answer-card"><p>Tentu! Kami menyediakan desain kustom sesuai dengan brand dan kebutuhan bisnis Anda.</p></div></div>
+                    <div class="faq-item-card"><div class="faq-question-card"><h3>Apakah website sudah mobile-friendly?</h3><span class="faq-icon-card"><i class="fas fa-chevron-down"></i></span></div><div class="faq-answer-card"><p>Ya, semua website yang kami buat sudah responsive mobile mode.</p></div></div>
+                    <div class="faq-item-card"><div class="faq-question-card"><h3>Bagaimana cara memulai proyek dengan FLEXUS?</h3><span class="faq-icon-card"><i class="fas fa-chevron-down"></i></span></div><div class="faq-answer-card"><p>Anda bisa menghubungi kami melalui tombol "Konsultasi Gratis" atau "Hubungi Kami" untuk konsultasi awal.</p></div></div>
                 </div>
-
-                <div class="faq-right-new">
-                    <img src="faq.webp" alt="FAQ Illustration" />
-                </div>
+                <div class="faq-right-new"><img src="faq.webp" alt="FAQ Illustration" /></div>
             </div>
         </div>
     </section>
 
-    <!-- ===== TESTIMONIAL ===== -->
     <section class="testimonial-page" id="testimonial">
         <div class="testimonial-container" data-aos="fade-up" data-aos-duration="800">
             <div class="testimonial-page-header">
                 <span class="badge">✦ Testimonial</span>
                 <h1>Apa Kata <span>Klien Kami</span></h1>
-                <p>
-                    Ulasan dari klien yang telah merasakan pengalaman bekerja sama dengan FLEXUS.
-                </p>
+                <p>Ulasan dari klien yang telah merasakan pengalaman bekerja sama dengan FLEXUS.</p>
             </div>
-
             <div class="testimonial-track-wrapper">
                 <div class="testimonial-track">
-                    <div class="testimonial-card-loop">
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">FLEXUS berhasil mengubah website kami menjadi lebih modern dan cepat. Hasilnya luar biasa!</p>
-                        <div class="author">
-                            <img src="https://i.pravatar.cc/100?img=5" alt="Sarah" />
-                            <div>
-                                <div class="name">Sarah Chen</div>
-                                <div class="role">CEO, TechStore</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card-loop">
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">Pelayanan sangat profesional dan responsif. Website kami sekarang loading super cepat!</p>
-                        <div class="author">
-                            <img src="https://i.pravatar.cc/100?img=8" alt="Michael" />
-                            <div>
-                                <div class="name">Michael Pratama</div>
-                                <div class="role">Founder, CreativeHub</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card-loop">
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">Desain yang diberikan FLEXUS sangat elegan dan sesuai dengan brand kami. Sangat puas!</p>
-                        <div class="author">
-                            <img src="https://i.pravatar.cc/100?img=10" alt="Aisha" />
-                            <div>
-                                <div class="name">Aisha Rahman</div>
-                                <div class="role">Marketing Director, Dazzle</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card-loop">
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">Tim FLEXUS sangat membantu dari awal hingga akhir. Website kami jadi lebih profesional.</p>
-                        <div class="author">
-                            <img src="https://i.pravatar.cc/100?img=15" alt="David" />
-                            <div>
-                                <div class="name">David Wijaya</div>
-                                <div class="role">Owner, Wijaya Group</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card-loop">
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">FLEXUS memberikan solusi terbaik untuk bisnis kami. Website kini menjadi aset berharga.</p>
-                        <div class="author">
-                            <img src="https://i.pravatar.cc/100?img=25" alt="Maya" />
-                            <div>
-                                <div class="name">Maya Sari</div>
-                                <div class="role">Owner, Studio Maya</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card-loop">
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">Kualitas kerja FLEXUS di atas ekspektasi. Sangat direkomendasikan untuk bisnis Anda!</p>
-                        <div class="author">
-                            <img src="https://i.pravatar.cc/100?img=30" alt="Randy" />
-                            <div>
-                                <div class="name">Randy Hartono</div>
-                                <div class="role">CTO, StartUpID</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card-loop">
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">Website kami sekarang terlihat lebih premium dan profesional. Terima kasih FLEXUS!</p>
-                        <div class="author">
-                            <img src="https://i.pravatar.cc/100?img=45" alt="Jessica" />
-                            <div>
-                                <div class="name">Jessica Tan</div>
-                                <div class="role">Brand Manager, Luxe</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card-loop">
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">Proses pengerjaan cepat dan hasilnya memuaskan. FLEXUS benar-benar profesional.</p>
-                        <div class="author">
-                            <img src="https://i.pravatar.cc/100?img=35" alt="Andi" />
-                            <div>
-                                <div class="name">Andi Saputra</div>
-                                <div class="role">CEO, DigitalCore</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Duplikat -->
-                    <div class="testimonial-card-loop">
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">FLEXUS berhasil mengubah website kami menjadi lebih modern dan cepat. Hasilnya luar biasa!</p>
-                        <div class="author">
-                            <img src="https://i.pravatar.cc/100?img=5" alt="Sarah" />
-                            <div>
-                                <div class="name">Sarah Chen</div>
-                                <div class="role">CEO, TechStore</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card-loop">
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">Pelayanan sangat profesional dan responsif. Website kami sekarang loading super cepat!</p>
-                        <div class="author">
-                            <img src="https://i.pravatar.cc/100?img=8" alt="Michael" />
-                            <div>
-                                <div class="name">Michael Pratama</div>
-                                <div class="role">Founder, CreativeHub</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card-loop">
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">Desain yang diberikan FLEXUS sangat elegan dan sesuai dengan brand kami. Sangat puas!</p>
-                        <div class="author">
-                            <img src="https://i.pravatar.cc/100?img=10" alt="Aisha" />
-                            <div>
-                                <div class="name">Aisha Rahman</div>
-                                <div class="role">Marketing Director, Dazzle</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card-loop">
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">Tim FLEXUS sangat membantu dari awal hingga akhir. Website kami jadi lebih profesional.</p>
-                        <div class="author">
-                            <img src="https://i.pravatar.cc/100?img=15" alt="David" />
-                            <div>
-                                <div class="name">David Wijaya</div>
-                                <div class="role">Owner, Wijaya Group</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card-loop">
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">FLEXUS memberikan solusi terbaik untuk bisnis kami. Website kini menjadi aset berharga.</p>
-                        <div class="author">
-                            <img src="https://i.pravatar.cc/100?img=25" alt="Maya" />
-                            <div>
-                                <div class="name">Maya Sari</div>
-                                <div class="role">Owner, Studio Maya</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card-loop">
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">Kualitas kerja FLEXUS di atas ekspektasi. Sangat direkomendasikan untuk bisnis Anda!</p>
-                        <div class="author">
-                            <img src="https://i.pravatar.cc/100?img=30" alt="Randy" />
-                            <div>
-                                <div class="name">Randy Hartono</div>
-                                <div class="role">CTO, StartUpID</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card-loop">
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">Website kami sekarang terlihat lebih premium dan profesional. Terima kasih FLEXUS!</p>
-                        <div class="author">
-                            <img src="https://i.pravatar.cc/100?img=45" alt="Jessica" />
-                            <div>
-                                <div class="name">Jessica Tan</div>
-                                <div class="role">Brand Manager, Luxe</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card-loop">
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">Proses pengerjaan cepat dan hasilnya memuaskan. FLEXUS benar-benar profesional.</p>
-                        <div class="author">
-                            <img src="https://i.pravatar.cc/100?img=35" alt="Andi" />
-                            <div>
-                                <div class="name">Andi Saputra</div>
-                                <div class="role">CEO, DigitalCore</div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="testimonial-card-loop"><div class="stars">★★★★★</div><p class="quote">FLEXUS berhasil mengubah website kami menjadi lebih modern dan cepat. Hasilnya luar biasa!</p><div class="author"><img src="https://i.pravatar.cc/100?img=5" alt="Sarah" /><div><div class="name">Sarah Chen</div><div class="role">CEO, TechStore</div></div></div></div>
+                    <div class="testimonial-card-loop"><div class="stars">★★★★★</div><p class="quote">Pelayanan sangat profesional dan responsif. Website kami sekarang loading super cepat!</p><div class="author"><img src="https://i.pravatar.cc/100?img=8" alt="Michael" /><div><div class="name">Michael Pratama</div><div class="role">Founder, CreativeHub</div></div></div></div>
+                    <div class="testimonial-card-loop"><div class="stars">★★★★★</div><p class="quote">Desain yang diberikan FLEXUS sangat elegan dan sesuai dengan brand kami. Sangat puas!</p><div class="author"><img src="https://i.pravatar.cc/100?img=10" alt="Aisha" /><div><div class="name">Aisha Rahman</div><div class="role">Marketing Director, Dazzle</div></div></div></div>
+                    <div class="testimonial-card-loop"><div class="stars">★★★★★</div><p class="quote">Tim FLEXUS sangat membantu dari awal hingga akhir. Website kami jadi lebih profesional.</p><div class="author"><img src="https://i.pravatar.cc/100?img=15" alt="David" /><div><div class="name">David Wijaya</div><div class="role">Owner, Wijaya Group</div></div></div></div>
+                    <div class="testimonial-card-loop"><div class="stars">★★★★★</div><p class="quote">FLEXUS memberikan solusi terbaik untuk bisnis kami. Website kini menjadi aset berharga.</p><div class="author"><img src="https://i.pravatar.cc/100?img=25" alt="Maya" /><div><div class="name">Maya Sari</div><div class="role">Owner, Studio Maya</div></div></div></div>
+                    <div class="testimonial-card-loop"><div class="stars">★★★★★</div><p class="quote">Kualitas kerja FLEXUS di atas ekspektasi. Sangat direkomendasikan untuk bisnis Anda!</p><div class="author"><img src="https://i.pravatar.cc/100?img=30" alt="Randy" /><div><div class="name">Randy Hartono</div><div class="role">CTO, StartUpID</div></div></div></div>
+                    <div class="testimonial-card-loop"><div class="stars">★★★★★</div><p class="quote">Website kami sekarang terlihat lebih premium dan profesional. Terima kasih FLEXUS!</p><div class="author"><img src="https://i.pravatar.cc/100?img=45" alt="Jessica" /><div><div class="name">Jessica Tan</div><div class="role">Brand Manager, Luxe</div></div></div></div>
+                    <div class="testimonial-card-loop"><div class="stars">★★★★★</div><p class="quote">Proses pengerjaan cepat dan hasilnya memuaskan. FLEXUS benar-benar profesional.</p><div class="author"><img src="https://i.pravatar.cc/100?img=35" alt="Andi" /><div><div class="name">Andi Saputra</div><div class="role">CEO, DigitalCore</div></div></div></div>
+                    <div class="testimonial-card-loop"><div class="stars">★★★★★</div><p class="quote">FLEXUS berhasil mengubah website kami menjadi lebih modern dan cepat. Hasilnya luar biasa!</p><div class="author"><img src="https://i.pravatar.cc/100?img=5" alt="Sarah" /><div><div class="name">Sarah Chen</div><div class="role">CEO, TechStore</div></div></div></div>
+                    <div class="testimonial-card-loop"><div class="stars">★★★★★</div><p class="quote">Pelayanan sangat profesional dan responsif. Website kami sekarang loading super cepat!</p><div class="author"><img src="https://i.pravatar.cc/100?img=8" alt="Michael" /><div><div class="name">Michael Pratama</div><div class="role">Founder, CreativeHub</div></div></div></div>
+                    <div class="testimonial-card-loop"><div class="stars">★★★★★</div><p class="quote">Desain yang diberikan FLEXUS sangat elegan dan sesuai dengan brand kami. Sangat puas!</p><div class="author"><img src="https://i.pravatar.cc/100?img=10" alt="Aisha" /><div><div class="name">Aisha Rahman</div><div class="role">Marketing Director, Dazzle</div></div></div></div>
+                    <div class="testimonial-card-loop"><div class="stars">★★★★★</div><p class="quote">Tim FLEXUS sangat membantu dari awal hingga akhir. Website kami jadi lebih profesional.</p><div class="author"><img src="https://i.pravatar.cc/100?img=15" alt="David" /><div><div class="name">David Wijaya</div><div class="role">Owner, Wijaya Group</div></div></div></div>
+                    <div class="testimonial-card-loop"><div class="stars">★★★★★</div><p class="quote">FLEXUS memberikan solusi terbaik untuk bisnis kami. Website kini menjadi aset berharga.</p><div class="author"><img src="https://i.pravatar.cc/100?img=25" alt="Maya" /><div><div class="name">Maya Sari</div><div class="role">Owner, Studio Maya</div></div></div></div>
+                    <div class="testimonial-card-loop"><div class="stars">★★★★★</div><p class="quote">Kualitas kerja FLEXUS di atas ekspektasi. Sangat direkomendasikan untuk bisnis Anda!</p><div class="author"><img src="https://i.pravatar.cc/100?img=30" alt="Randy" /><div><div class="name">Randy Hartono</div><div class="role">CTO, StartUpID</div></div></div></div>
+                    <div class="testimonial-card-loop"><div class="stars">★★★★★</div><p class="quote">Website kami sekarang terlihat lebih premium dan profesional. Terima kasih FLEXUS!</p><div class="author"><img src="https://i.pravatar.cc/100?img=45" alt="Jessica" /><div><div class="name">Jessica Tan</div><div class="role">Brand Manager, Luxe</div></div></div></div>
+                    <div class="testimonial-card-loop"><div class="stars">★★★★★</div><p class="quote">Proses pengerjaan cepat dan hasilnya memuaskan. FLEXUS benar-benar profesional.</p><div class="author"><img src="https://i.pravatar.cc/100?img=35" alt="Andi" /><div><div class="name">Andi Saputra</div><div class="role">CEO, DigitalCore</div></div></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== FORM PESAN ===== -->
     <section class="form-page" id="contact">
         <div class="form-container" data-aos="fade-up" data-aos-duration="800">
             <div class="form-left">
                 <span class="badge">✦ Hubungi Kami</span>
                 <h2>Mari <span>Diskusikan</span> Kebutuhan Anda</h2>
-                <p>
-                    Kami siap membantu mewujudkan website impian Anda. Konsultasikan ide, 
-                    kebutuhan, dan pertanyaan Anda kepada tim kami.
-                </p>
+                <p>Kami siap membantu mewujudkan website impian Anda. Konsultasikan ide, kebutuhan, dan pertanyaan Anda kepada tim kami.</p>
                 <div class="contact-info">
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+62 896-8421-9904</span>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>hello@flexus.my.id</span>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Indramayu, Indonesia</span>
-                    </div>
+                    <div class="info-item"><i class="fas fa-phone"></i><span>+62 896-8421-9904</span></div>
+                    <div class="info-item"><i class="fas fa-envelope"></i><span>hello@flexus.my.id</span></div>
+                    <div class="info-item"><i class="fas fa-map-marker-alt"></i><span>Indramayu, Indonesia</span></div>
                 </div>
             </div>
-
             <div class="form-right">
                 <div class="form-title">Isi formulir di bawah ini</div>
                 <form id="contactFormNew">
-                    <div class="form-group-custom">
-                        <label>Nama Lengkap</label>
-                        <input type="text" id="nameNew" placeholder="Masukkan nama Anda" required />
-                    </div>
-
-                    <div class="form-group-custom">
-                        <label>Kategori Layanan</label>
-                        <select id="categoryNew">
-                            <option value="Landing Page">Landing Page</option>
-                            <option value="Company Profile">Company Profile</option>
-                            <option value="E-Commerce">E-Commerce</option>
-                            <option value="Portfolio">Portfolio</option>
-                            <option value="Custom">Custom</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group-custom">
-                        <label>Pesan</label>
-                        <textarea id="messageNew" placeholder="Tulis pesan Anda di sini..." required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit-form">
-                        <i class="fas fa-paper-plane"></i>
-                        Kirim Pesan
-                    </button>
+                    <div class="form-group-custom"><label>Nama Lengkap</label><input type="text" id="nameNew" placeholder="Masukkan nama Anda" required /></div>
+                    <div class="form-group-custom"><label>Kategori Layanan</label><select id="categoryNew"><option value="Landing Page">Landing Page</option><option value="Company Profile">Company Profile</option><option value="E-Commerce">E-Commerce</option><option value="Portfolio">Portfolio</option><option value="Custom">Custom</option></select></div>
+                    <div class="form-group-custom"><label>Pesan</label><textarea id="messageNew" placeholder="Tulis pesan Anda di sini..." required></textarea></div>
+                    <button type="submit" class="btn-submit-form"><i class="fas fa-paper-plane"></i>Kirim Pesan</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- ===== FOOTER - 4 KOLOM ===== -->
     <footer class="footer-contact">
         <div class="footer-container">
             <div class="footer-brand" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
                 <h2>FLEX<span>US</span></h2>
-                <p class="desc">
-                    Platform digital independen yang lahir tahun 2026 di Indramayu. 
-                    Berfokus pada solusi web modern dan personal.
-                </p>
+                <p class="desc">Platform digital independen yang lahir tahun 2026 di Indramayu. Berfokus pada solusi web modern dan personal.</p>
                 <div class="footer-social">
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -3505,7 +3164,6 @@
                     <a href="#" class="tiktok-link" aria-label="TikTok" id="btnTikTok"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
-
             <div class="footer-links" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
                 <h4><i class="fas fa-link"></i> Tautan Cepat</h4>
                 <ul>
@@ -3517,123 +3175,55 @@
                     <li><a href="#testimonial"><i class="fas fa-chevron-right"></i> Testimonial</a></li>
                 </ul>
             </div>
-
             <div class="footer-links" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
                 <h4><i class="fas fa-cogs"></i> Layanan</h4>
-                <ul class="layanan-list">
-                    <li>Landing Page</li>
-                    <li>Company Profile</li>
-                    <li>E-Commerce</li>
-                    <li>Portfolio</li>
-                    <li>Custom Website</li>
-                </ul>
+                <ul class="layanan-list"><li>Landing Page</li><li>Company Profile</li><li>E-Commerce</li><li>Portfolio</li><li>Custom Website</li></ul>
             </div>
-
             <div class="footer-hours" data-aos="fade-left" data-aos-duration="600" data-aos-delay="400">
                 <h4><i class="fas fa-clock"></i> Jam Operasional</h4>
-                <div class="hour-item">
-                    <span class="day">Senin - Kamis</span>
-                    <span class="time">07.00 - 22.00</span>
-                </div>
-                <div class="hour-item">
-                    <span class="day">Jum'at</span>
-                    <span class="time">13.00 - 22.00</span>
-                </div>
-                <div class="hour-item">
-                    <span class="day">Sabtu - Minggu</span>
-                    <span class="time">10.00 - 22.00</span>
-                </div>
+                <div class="hour-item"><span class="day">Senin - Kamis</span><span class="time">07.00 - 22.00</span></div>
+                <div class="hour-item"><span class="day">Jum'at</span><span class="time">13.00 - 22.00</span></div>
+                <div class="hour-item"><span class="day">Sabtu - Minggu</span><span class="time">10.00 - 22.00</span></div>
             </div>
         </div>
     </footer>
 
-    <!-- ===== FOOTER BOTTOM ===== -->
     <div class="footer-bottom">
         <p>&copy; 2026 <span class="brand-text">FLEXUS</span>. All rights reserved.</p>
     </div>
 
-    <!-- ===== AOS JS ===== -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            once: true,
-            offset: 50,
-            easing: 'ease-out-cubic',
-            duration: 800,
-            disable: false
-        });
+        AOS.init({ once: true, offset: 50, easing: 'ease-out-cubic', duration: 800, disable: false });
 
-        // ===== NOMOR WA BARU UNTUK FLOATING CS =====
+        setTimeout(function() {
+            const header = document.querySelector('header');
+            const floatBtn = document.querySelector('.float-btn');
+            if (header) { header.style.opacity = '1'; header.style.transform = 'none'; header.style.visibility = 'visible'; }
+            if (floatBtn) { floatBtn.style.opacity = '1'; floatBtn.style.transform = 'none'; floatBtn.style.visibility = 'visible'; }
+        }, 100);
+
         const waNumber = '6289684219904';
         const waNumberCS = '628567858301';
 
-        function openWhatsApp(text) {
-            const url = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(text);
-            window.open(url, '_blank');
-        }
+        document.getElementById('btnKonsultasiHome').addEventListener('click', function(e) { e.preventDefault(); window.open('https://wa.me/' + waNumber, '_blank'); });
+        document.getElementById('floatBtn').addEventListener('click', function(e) { e.preventDefault(); window.open('https://wa.me/' + waNumberCS, '_blank'); });
 
-        function openWhatsAppCS() {
-            const url = 'https://wa.me/' + waNumberCS;
-            window.open(url, '_blank');
-        }
+        document.querySelectorAll('.btn-paket').forEach(btn => { btn.addEventListener('click', function(e) { e.preventDefault(); window.open('https://wa.me/' + waNumber, '_blank'); }); });
+        document.querySelectorAll('.btn-visit').forEach(btn => { btn.addEventListener('click', function(e) { e.preventDefault(); window.open(this.getAttribute('data-url'), '_blank'); }); });
+        document.getElementById('btnTikTok').addEventListener('click', function(e) { e.preventDefault(); window.open('https://www.tiktok.com', '_blank'); });
 
-        // ===== TOMBOL KONSULTASI HOME - TANPA PESAN =====
-        document.getElementById('btnKonsultasiHome').addEventListener('click', function(e) {
-            e.preventDefault();
-            const url = 'https://wa.me/' + waNumber;
-            window.open(url, '_blank');
-        });
-
-        // ===== FLOATING CS - NOMOR BARU, TANPA PESAN =====
-        document.getElementById('floatBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            const url = 'https://wa.me/' + waNumberCS;
-            window.open(url, '_blank');
-        });
-
-        // ===== PAKET - TANPA PESAN =====
-        document.querySelectorAll('.btn-paket').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const url = 'https://wa.me/' + waNumber;
-                window.open(url, '_blank');
-            });
-        });
-
-        // ===== PORTFOLIO VISIT =====
-        document.querySelectorAll('.btn-visit').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const url = this.getAttribute('data-url');
-                window.open(url, '_blank');
-            });
-        });
-
-        // ===== TIKTOK =====
-        document.getElementById('btnTikTok').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.open('https://www.tiktok.com', '_blank');
-        });
-
-        // ===== FORM PESAN - TETAP DENGAN PESAN OTOMATIS =====
         document.getElementById('contactFormNew').addEventListener('submit', function(e) {
             e.preventDefault();
-
             const name = document.getElementById('nameNew').value.trim();
             const category = document.getElementById('categoryNew').value;
             const message = document.getElementById('messageNew').value.trim();
-
             if (name && message) {
-                const text = 'halo saya ' + name + ' dari website\nKategori: ' + category + '\n\n' + message;
-                const url = 'https://wa.me/' + waNumber + '?text=' + encodeURIComponent(text);
-                window.open(url, '_blank');
+                window.open('https://wa.me/' + waNumber + '?text=' + encodeURIComponent('halo saya ' + name + ' dari website\nKategori: ' + category + '\n\n' + message), '_blank');
                 this.reset();
-            } else {
-                alert('Mohon lengkapi nama dan pesan.');
-            }
+            } else { alert('Mohon lengkapi nama dan pesan.'); }
         });
 
-        // ===== TESTIMONIAL =====
         const testimonials = [
             { name: 'Sarah Chen', username: '@sarahdev', avatar: 'https://i.pravatar.cc/100?img=5', text: 'FLEXUS bikin website kami jadi cepat banget!' },
             { name: 'Michael Pratama', username: '@mikecreative', avatar: 'https://i.pravatar.cc/100?img=8', text: 'Desainnya modern dan sangat profesional.' },
@@ -3643,283 +3233,119 @@
             { name: 'Randy Hartono', username: '@randyh_io', avatar: 'https://i.pravatar.cc/100?img=30', text: 'Kualitas kerja FLEXUS di atas ekspektasi.' },
             { name: 'Jessica Tan', username: '@jessicatn', avatar: 'https://i.pravatar.cc/100?img=45', text: 'Sangat direkomendasikan untuk bisnis Anda!' }
         ];
-
-        let currentIndex = 0;
-        let intervalId;
-
-        const content = document.getElementById('testimonialContent');
-        const avatar = document.getElementById('testimonialAvatar');
-        const name = document.getElementById('testimonialName');
-        const username = document.getElementById('testimonialUsername');
-        const text = document.getElementById('testimonialText');
-        const dots = document.querySelectorAll('#testimonialDots span');
+        let currentIndex = 0, intervalId;
+        const content = document.getElementById('testimonialContent'), avatar = document.getElementById('testimonialAvatar'), name = document.getElementById('testimonialName'), username = document.getElementById('testimonialUsername'), text = document.getElementById('testimonialText'), dots = document.querySelectorAll('#testimonialDots span');
 
         function updateTestimonial(index) {
             const data = testimonials[index];
             content.classList.add('fade-out');
             setTimeout(() => {
-                avatar.src = data.avatar;
-                avatar.alt = data.name;
-                name.textContent = data.name;
-                username.textContent = data.username;
-                text.textContent = data.text;
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === index);
-                });
+                avatar.src = data.avatar; avatar.alt = data.name; name.textContent = data.name; username.textContent = data.username; text.textContent = data.text;
+                dots.forEach((dot, i) => { dot.classList.toggle('active', i === index); });
                 content.classList.remove('fade-out');
             }, 400);
         }
-
-        function nextTestimonial() {
-            currentIndex = (currentIndex + 1) % testimonials.length;
-            updateTestimonial(currentIndex);
-        }
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                clearInterval(intervalId);
-                currentIndex = index;
-                updateTestimonial(currentIndex);
-                intervalId = setInterval(nextTestimonial, 4000);
-            });
-        });
-
+        function nextTestimonial() { currentIndex = (currentIndex + 1) % testimonials.length; updateTestimonial(currentIndex); }
+        dots.forEach((dot, index) => { dot.addEventListener('click', () => { clearInterval(intervalId); currentIndex = index; updateTestimonial(currentIndex); intervalId = setInterval(nextTestimonial, 4000); }); });
         intervalId = setInterval(nextTestimonial, 4000);
 
-        // ===== FAQ =====
-        document.querySelectorAll('.faq-item-card').forEach(item => {
-            const question = item.querySelector('.faq-question-card');
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                document.querySelectorAll('.faq-item-card').forEach(i => i.classList.remove('active'));
-                if (!isActive) item.classList.add('active');
-            });
-        });
+        document.querySelectorAll('.faq-item-card').forEach(item => { const question = item.querySelector('.faq-question-card'); question.addEventListener('click', () => { const isActive = item.classList.contains('active'); document.querySelectorAll('.faq-item-card').forEach(i => i.classList.remove('active')); if (!isActive) item.classList.add('active'); }); });
 
-        // ===== SMOOTH SCROLL =====
-        document.querySelectorAll('nav ul li a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    e.preventDefault();
-                    const headerOffset = 80;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                }
-            });
-        });
+        document.querySelectorAll('nav ul li a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { const targetId = this.getAttribute('href'); if (targetId === '#') return; const targetElement = document.querySelector(targetId); if (targetElement) { e.preventDefault(); const headerOffset = 80; const elementPosition = targetElement.getBoundingClientRect().top; const offsetPosition = elementPosition + window.pageYOffset - headerOffset; window.scrollTo({ top: offsetPosition, behavior: 'smooth' }); } }); });
 
-        // ===== PORTFOLIO SLIDER - GESER 1 PER 1 =====
         const portfolioItems = document.querySelectorAll('.portfolio-item');
         const totalItems = portfolioItems.length;
-        let currentStart = 0;
-        let isTransitioning = false;
+        let currentStart = 0, isTransitioning = false;
         const grid = document.getElementById('portfolioGrid');
 
-        function getItemsPerPage() {
-            if (window.innerWidth <= 768) return 1;
-            if (window.innerWidth <= 1024) return 2;
-            return 3;
-        }
-
-        function getMaxStart() {
-            return Math.max(0, totalItems - getItemsPerPage());
-        }
-
+        function getItemsPerPage() { if (window.innerWidth <= 768) return 1; if (window.innerWidth <= 1024) return 2; return 3; }
+        function getMaxStart() { return Math.max(0, totalItems - getItemsPerPage()); }
         function updatePortfolio(direction) {
             if (isTransitioning) return;
             isTransitioning = true;
-
-            const itemsPerPageNow = getItemsPerPage();
-            const maxStartNow = getMaxStart();
-            const newStart = currentStart + direction;
-
-            if (newStart < 0 || newStart > maxStartNow) {
-                isTransitioning = false;
-                return;
-            }
-
-            const offsetPercent = -(newStart * (100 / itemsPerPageNow));
-            grid.style.transform = 'translateX(' + offsetPercent + '%)';
+            const itemsPerPageNow = getItemsPerPage(), maxStartNow = getMaxStart(), newStart = currentStart + direction;
+            if (newStart < 0 || newStart > maxStartNow) { isTransitioning = false; return; }
+            grid.style.transform = 'translateX(' + (-(newStart * (100 / itemsPerPageNow))) + '%)';
             currentStart = newStart;
-
             updateButtons();
             setTimeout(() => { isTransitioning = false; }, 500);
         }
-
         function updateButtons() {
-            const prevBtn = document.getElementById('prevProject');
-            const nextBtn = document.getElementById('nextProject');
-            const maxStartNow = getMaxStart();
-
-            if (currentStart === 0) {
-                prevBtn.classList.add('disabled');
-            } else {
-                prevBtn.classList.remove('disabled');
-            }
-
-            if (currentStart >= maxStartNow) {
-                nextBtn.classList.add('disabled');
-            } else {
-                nextBtn.classList.remove('disabled');
-            }
+            const prevBtn = document.getElementById('prevProject'), nextBtn = document.getElementById('nextProject'), maxStartNow = getMaxStart();
+            prevBtn.classList.toggle('disabled', currentStart === 0);
+            nextBtn.classList.toggle('disabled', currentStart >= maxStartNow);
         }
-
         function resetPortfolio() {
-            const itemsPerPageNow = getItemsPerPage();
-            const maxStartNow = getMaxStart();
-            if (currentStart > maxStartNow) {
-                currentStart = maxStartNow;
-            }
-            const offsetPercent = -(currentStart * (100 / itemsPerPageNow));
-            grid.style.transform = 'translateX(' + offsetPercent + '%)';
+            const itemsPerPageNow = getItemsPerPage(), maxStartNow = getMaxStart();
+            if (currentStart > maxStartNow) currentStart = maxStartNow;
+            grid.style.transform = 'translateX(' + (-(currentStart * (100 / itemsPerPageNow))) + '%)';
             updateButtons();
         }
-
-        document.getElementById('prevProject').addEventListener('click', function(e) {
-            e.preventDefault();
-            if (currentStart > 0 && !isTransitioning) {
-                updatePortfolio(-1);
-            }
-        });
-
-        document.getElementById('nextProject').addEventListener('click', function(e) {
-            e.preventDefault();
-            if (currentStart < getMaxStart() && !isTransitioning) {
-                updatePortfolio(1);
-            }
-        });
-
+        document.getElementById('prevProject').addEventListener('click', function(e) { e.preventDefault(); if (currentStart > 0 && !isTransitioning) updatePortfolio(-1); });
+        document.getElementById('nextProject').addEventListener('click', function(e) { e.preventDefault(); if (currentStart < getMaxStart() && !isTransitioning) updatePortfolio(1); });
         window.addEventListener('resize', resetPortfolio);
         resetPortfolio();
 
-        // ===== SERVICE CATEGORIES =====
         const paketData = {
-            landing: {
-                cards: [
-                    { title: 'Basic', price: 'Rp 500k', icon: 'fa-seedling', desc: 'Cocok untuk pemula yang ingin memiliki website profesional.', features: ['Structur website terbaik', 'Desain Responsive', 'Domain 1 Thn', 'Support 5 Hari'], badge: null, badgeType: null },
-                    { title: 'Business', price: 'Rp 1Jt', icon: 'fa-rocket', desc: 'Solusi lengkap untuk bisnis yang ingin berkembang pesat.', features: ['Tampilan premium & mewah', 'Desain Premium & Custom', 'Domain 1 Thn', 'SEO Basic', 'Support 7 Hari'], badge: 'Populer', badgeType: 'populer' },
-                    { title: 'Enterprise', price: 'Rp 1.5Jt', icon: 'fa-crown', desc: 'Untuk perusahaan besar dengan kebutuhan kompleks.', features: ['Performa scala besar', 'Desain Custom & Animasi', 'Domain 1 Thn', 'SEO Basic & Optimal web', 'Support 30 Hari'], badge: null, badgeType: 'diskon', coret: 'Rp 1.7Jt' }
-                ]
-            },
-            profile: {
-                cards: [
-                    { title: 'Starter', price: 'Rp 600k', icon: 'fa-building', desc: 'Company profile sederhana untuk bisnis baru.', features: ['Tampilan profesionl sip pakai', 'Desain Profesional', 'Domain 1 Thn', 'Support 5 Hari'], badge: null, badgeType: null },
-                    { title: 'Corporate', price: 'Rp 1.2Jt', icon: 'fa-briefcase', desc: 'Company profile premium dengan fitur lengkap.', features: ['Website 10 Halaman', 'Desain Custom', 'Domain 1 Thn', 'SEO Basic', 'Support 7 Hari'], badge: 'Populer', badgeType: 'populer' },
-                    { title: 'Enterprise', price: 'Rp 1.7Jt', icon: 'fa-crown', desc: 'Company profile untuk korporasi besar.', features: ['Solusi korporasi skala penuh', 'Desain Premium', 'Domain 1 Thn', 'SEO Advanced', 'Support 30 Hari'], badge: null, badgeType: 'diskon', coret: 'Rp 2Jt' }
-                ]
-            },
-            ecommerce: {
-                cards: [
-                    { title: 'Basic Store', price: 'Rp 1.2Jt', icon: 'fa-store', desc: 'Toko online sederhana untuk memulai bisnis.', features: ['Produk 50 Item', 'Pembayaran Gateway', 'Domain 1 Thn', 'Support 7 Hari'], badge: null, badgeType: null },
-                    { title: 'Pro Store', price: 'Rp 2.5Jt', icon: 'fa-rocket', desc: 'Toko online profesional dengan fitur lengkap.', features: ['Produk Unlimited', 'Multi Payment', 'Domain 1 Thn', 'SEO Basic', 'Support 14 Hari'], badge: 'Populer', badgeType: 'populer' },
-                    { title: 'Enterprise Store', price: 'Rp 4Jt', icon: 'fa-crown', desc: 'Solusi e-commerce untuk bisnis besar.', features: ['Multi Vendor', 'Custom Feature', 'Domain 1 Thn', 'SEO Advanced', 'Support 30 Hari'], badge: null, badgeType: 'diskon', coret: 'Rp 4.5Jt' }
-                ]
-            },
-            portfolio: {
-                cards: [
-                    { title: 'Mini Portfolio', price: 'Rp 600k', icon: 'fa-images', desc: 'Portfolio sederhana untuk kreatif.', features: ['Gallery 20 Project', 'Desain Minimalis', 'Domain 1 Thn', 'Support 5 Hari'], badge: null, badgeType: null },
-                    { title: 'Pro Portfolio', price: 'Rp 1.2Jt', icon: 'fa-rocket', desc: 'Portfolio profesional untuk show karya.', features: ['Gallery Unlimited', 'Custom Layout', 'Domain 1 Thn', 'SEO Basic', 'Support 7 Hari'], badge: 'Populer', badgeType: 'populer' },
-                    { title: 'Agency Portfolio', price: 'Rp 2Jt', icon: 'fa-crown', desc: 'Portfolio untuk agency atau studio.', features: ['Multi Category', 'Animasi Premium', 'Domain 1 Thn', 'SEO Advanced', 'Support 30 Hari'], badge: null, badgeType: 'diskon', coret: 'Rp 2.2Jt' }
-                ]
-            },
-            custom: {
-                cards: [
-                    { title: 'Custom Basic', price: 'Rp 900k', icon: 'fa-code', desc: 'Website custom sesuai kebutuhan dasar.', features: ['Custom Design', '3 Halaman', 'Domain 1 Thn', 'Support 7 Hari'], badge: null, badgeType: null },
-                    { title: 'Custom Pro', price: 'Rp 2Jt', icon: 'fa-rocket', desc: 'Website custom dengan fitur kompleks.', features: ['Full Custom', 'Unlimited Halaman', 'Domain 1 Thn', 'SEO Basic', 'Support 14 Hari'], badge: 'Populer', badgeType: 'populer' },
-                    { title: 'Custom Enterprise', price: 'Rp 3.5Jt', icon: 'fa-crown', desc: 'Solusi custom untuk kebutuhan spesifik.', features: ['Full Custom + API', 'Unlimited', 'Domain 1 Thn', 'SEO Advanced', 'Support 30 Hari'], badge: null, badgeType: 'diskon', coret: 'Rp 4.1Jt' }
-                ]
-            }
+            landing: { cards: [
+                { title: 'Basic', price: 'Rp 500k', icon: 'fa-seedling', desc: 'Cocok untuk pemula yang ingin memiliki website profesional.', features: ['Stuctur website terbaik', 'Desain Responsive', 'Domain 1 Thn', 'Support 5 Hari'], badge: null, badgeType: null },
+                { title: 'Business', price: 'Rp 1Jt', icon: 'fa-rocket', desc: 'Solusi lengkap untuk bisnis yang ingin berkembang pesat.', features: ['Tampilan premium & mewah', 'Desain Premium & Custom', 'Domain 1 Thn', 'SEO Basic', 'Support 7 Hari'], badge: 'Populer', badgeType: 'populer' },
+                { title: 'Enterprise', price: 'Rp 1.5Jt', icon: 'fa-crown', desc: 'Untuk perusahaan besar dengan kebutuhan kompleks.', features: ['Performa skala besar', 'Desain Custom & Animasi', 'Domain 1 Thn', 'SEO Basic & Optimal web', 'Support 30 Hari'], badge: null, badgeType: 'diskon', coret: 'Rp 1.7Jt' }
+            ]},
+            profile: { cards: [
+                { title: 'Starter', price: 'Rp 600k', icon: 'fa-building', desc: 'Company profile sederhana untuk bisnis baru.', features: ['Tampilan profesionl sip pakai', 'Desain Profesional', 'Domain 1 Thn', 'Support 5 Hari'], badge: null, badgeType: null },
+                { title: 'Corporate', price: 'Rp 1.2Jt', icon: 'fa-briefcase', desc: 'Company profile premium dengan fitur lengkap.', features: ['Website 10 Halaman', 'Desain Custom', 'Domain 1 Thn', 'SEO Basic', 'Support 7 Hari'], badge: 'Populer', badgeType: 'populer' },
+                { title: 'Enterprise', price: 'Rp 1.7Jt', icon: 'fa-crown', desc: 'Company profile untuk korporasi besar.', features: ['Solusi korporasi skala penuh', 'Desain Premium', 'Domain 1 Thn', 'SEO Advanced', 'Support 30 Hari'], badge: null, badgeType: 'diskon', coret: 'Rp 2Jt' }
+            ]},
+            ecommerce: { cards: [
+                { title: 'Basic Store', price: 'Rp 1.2Jt', icon: 'fa-store', desc: 'Toko online sederhana untuk memulai bisnis.', features: ['Produk 50 Item', 'Pembayaran Gateway', 'Domain 1 Thn', 'Support 7 Hari'], badge: null, badgeType: null },
+                { title: 'Pro Store', price: 'Rp 2.5Jt', icon: 'fa-rocket', desc: 'Toko online profesional dengan fitur lengkap.', features: ['Produk Unlimited', 'Multi Payment', 'Domain 1 Thn', 'SEO Basic', 'Support 14 Hari'], badge: 'Populer', badgeType: 'populer' },
+                { title: 'Enterprise Store', price: 'Rp 4Jt', icon: 'fa-crown', desc: 'Solusi e-commerce untuk bisnis besar.', features: ['Multi Vendor', 'Custom Feature', 'Domain 1 Thn', 'SEO Advanced', 'Support 30 Hari'], badge: null, badgeType: 'diskon', coret: 'Rp 4.5Jt' }
+            ]},
+            portfolio: { cards: [
+                { title: 'Mini Portfolio', price: 'Rp 600k', icon: 'fa-images', desc: 'Portfolio sederhana untuk kreatif.', features: ['Gallery 20 Project', 'Desain Minimalis', 'Domain 1 Thn', 'Support 5 Hari'], badge: null, badgeType: null },
+                { title: 'Pro Portfolio', price: 'Rp 1.2Jt', icon: 'fa-rocket', desc: 'Portfolio profesional untuk show karya.', features: ['Gallery Unlimited', 'Custom Layout', 'Domain 1 Thn', 'SEO Basic', 'Support 7 Hari'], badge: 'Populer', badgeType: 'populer' },
+                { title: 'Agency Portfolio', price: 'Rp 2Jt', icon: 'fa-crown', desc: 'Portfolio untuk agency atau studio.', features: ['Multi Category', 'Animasi Premium', 'Domain 1 Thn', 'SEO Advanced', 'Support 30 Hari'], badge: null, badgeType: 'diskon', coret: 'Rp 2.2Jt' }
+            ]},
+            custom: { cards: [
+                { title: 'Custom Basic', price: 'Rp 900k', icon: 'fa-code', desc: 'Website custom sesuai kebutuhan dasar.', features: ['Custom Design', '3 Halaman', 'Domain 1 Thn', 'Support 7 Hari'], badge: null, badgeType: null },
+                { title: 'Custom Pro', price: 'Rp 2Jt', icon: 'fa-rocket', desc: 'Website custom dengan fitur kompleks.', features: ['Full Custom', 'Unlimited Halaman', 'Domain 1 Thn', 'SEO Basic', 'Support 14 Hari'], badge: 'Populer', badgeType: 'populer' },
+                { title: 'Custom Enterprise', price: 'Rp 3.5Jt', icon: 'fa-crown', desc: 'Solusi custom untuk kebutuhan spesifik.', features: ['Full Custom + API', 'Unlimited', 'Domain 1 Thn', 'SEO Advanced', 'Support 30 Hari'], badge: null, badgeType: 'diskon', coret: 'Rp 4.1Jt' }
+            ]}
         };
 
         function renderPaket(category) {
             const data = paketData[category] || paketData.landing;
             const gridPaket = document.getElementById('paketGrid');
             gridPaket.innerHTML = '';
-
-            data.cards.forEach((card, index) => {
+            data.cards.forEach((card) => {
                 const cardDiv = document.createElement('div');
                 cardDiv.className = 'paket-card';
                 if (card.badgeType === 'populer') cardDiv.classList.add('populer');
                 if (card.badgeType === 'diskon') cardDiv.classList.add('diskon');
-
-                let badgeHTML = '';
-                if (card.badge) {
-                    badgeHTML = `<span class="populer-badge">${card.badge}</span>`;
-                }
-
-                let priceHTML = `<div class="price">${card.price} <span>/proyek</span>`;
-                if (card.coret) {
-                    priceHTML += ` <span class="coret">${card.coret}</span>`;
-                }
-                priceHTML += `</div>`;
-
-                let featuresHTML = card.features.map(f => `<li><i class="fas fa-check"></i> ${f}</li>`).join('');
-
                 cardDiv.innerHTML = `
-                    ${badgeHTML}
+                    ${card.badge ? '<span class="populer-badge">' + card.badge + '</span>' : ''}
                     <span class="icon"><i class="fas ${card.icon}"></i></span>
                     <h3>${card.title}</h3>
-                    ${priceHTML}
+                    <div class="price">${card.price} <span>/proyek</span>${card.coret ? ' <span class="coret">' + card.coret + '</span>' : ''}</div>
                     <p class="desc">${card.desc}</p>
-                    <ul>${featuresHTML}</ul>
+                    <ul>${card.features.map(f => '<li><i class="fas fa-check"></i> ' + f + '</li>').join('')}</ul>
                     <a href="#" class="btn-paket" data-paket="${card.title}">Pilih Paket</a>
                 `;
-
                 gridPaket.appendChild(cardDiv);
             });
-
-            document.querySelectorAll('.btn-paket').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const url = 'https://wa.me/' + waNumber;
-                    window.open(url, '_blank');
-                });
-            });
+            document.querySelectorAll('.btn-paket').forEach(btn => { btn.addEventListener('click', function(e) { e.preventDefault(); window.open('https://wa.me/' + waNumber, '_blank'); }); });
         }
 
-        document.querySelectorAll('.cat-item').forEach(item => {
-            item.addEventListener('click', function() {
-                document.querySelectorAll('.cat-item').forEach(i => i.classList.remove('active'));
-                this.classList.add('active');
-                const category = this.getAttribute('data-category');
-                renderPaket(category);
-            });
-        });
+        document.querySelectorAll('.cat-item').forEach(item => { item.addEventListener('click', function() { document.querySelectorAll('.cat-item').forEach(i => i.classList.remove('active')); this.classList.add('active'); renderPaket(this.getAttribute('data-category')); }); });
 
-        // ===== HAMBURGER =====
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-        const overlay = document.getElementById('overlay');
-
-        function toggleMenu() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-        }
-
-        function closeMenu() {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
+        const hamburger = document.getElementById('hamburger'), navMenu = document.getElementById('navMenu'), overlay = document.getElementById('overlay');
+        function toggleMenu() { hamburger.classList.toggle('active'); navMenu.classList.toggle('active'); overlay.classList.toggle('active'); document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : ''; }
+        function closeMenu() { hamburger.classList.remove('active'); navMenu.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
         hamburger.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', closeMenu);
-
-        document.querySelectorAll('#navMenu li a').forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) closeMenu();
-        });
+        document.querySelectorAll('#navMenu li a').forEach(link => { link.addEventListener('click', closeMenu); });
+        window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMenu(); });
     </script>
-
 </body>
 </html>
